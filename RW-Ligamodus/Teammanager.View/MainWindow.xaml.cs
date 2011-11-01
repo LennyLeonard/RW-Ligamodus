@@ -19,9 +19,13 @@ namespace Teammanager.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Teammanager.Core.TeamManagerViewModel teamManagerViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+            teamManagerViewModel = new Core.TeamManagerViewModel();
+            this.DataContext = teamManagerViewModel;
         }
     }
 }

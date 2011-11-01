@@ -5,29 +5,15 @@ using System.Text;
 
 namespace Teammanager.Core
 {
-    public class TeamMember
+    public class TeamMember : TreeViewChildrenViewModel
     {
-        private string _name;
 
-        public TeamMember(string Name)
+        public TeamMember(TreeViewChildrenViewModel parent, string name) : base (parent, name)
         {
-            MemberName = Name;
         }
 
 
         #region properties
-
-        public string MemberName
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                _name = value;
-            }
-        }
 
         #endregion
     }
