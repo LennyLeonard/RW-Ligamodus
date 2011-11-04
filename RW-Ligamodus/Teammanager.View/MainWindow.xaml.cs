@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using Teammanager.Core;
 
 namespace Teammanager.View
 {
@@ -24,8 +13,17 @@ namespace Teammanager.View
         public MainWindow()
         {
             InitializeComponent();
+            this.tree.SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(tree_SelectedItemChanged);
             teamManagerViewModel = new Core.TeamManagerViewModel();
             this.DataContext = teamManagerViewModel;
         }
+
+        void tree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            teamManagerViewModel.SelectedTreeObject = e.NewValue;
+        }
+
+
+
     }
 }

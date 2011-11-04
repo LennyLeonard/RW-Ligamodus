@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Teammanager.Core
 {
@@ -7,6 +8,7 @@ namespace Teammanager.Core
         private CommandHelper _menuHelper;
         private CommandHelper _menuBarHelper;
         private CommandHelper _treeViewHelper;
+        private ItemSelectHelper _itemSelectHepler;
         private ObservableCollection<TreeViewChildrenViewModel> _tree;
 
         public TeamManagerViewModel()
@@ -14,10 +16,10 @@ namespace Teammanager.Core
             _menuHelper = new CommandHelper(commandMenu);
             _menuBarHelper = new CommandHelper(commandMenuBar);
             _treeViewHelper = new CommandHelper(commandTreeView);
+            _itemSelectHepler = new ItemSelectHelper();
             _tree = new ObservableCollection<TreeViewChildrenViewModel>();
 
         }
-
 
 
         public void commandMenu(object parameter)
@@ -27,8 +29,19 @@ namespace Teammanager.Core
                 case "addTeam":
                     Tree.Add(new Team(null, "The A Team"));
                     break;
+                case "addTeamMember":
+                    Team t = SelectedTreeObject as Team;
+                    if (t != null)
+                    {
+                        t.Children.Add(new TeamMember(t, "B.A. Barakuda"));
+                    }
+                    break;
+                case "deleteItem":
+                    this.deleteCommand();
+                    break;
             }
         }
+
 
         public void commandMenuBar(object parameter)
         {
@@ -42,7 +55,34 @@ namespace Teammanager.Core
         {
             switch (parameter as string)
             {
+                case "addTeam":
+                    Tree.Add(new Team(null, "The A Team"));
+                    break;
+                case "addTeamMember":
+                    Team t = SelectedTreeObject as Team;
+                    t.Children.Add(new TeamMember(t, "B.A. Barakuda"));
+                    break;
+                case "deleteItem":
+                    this.deleteCommand();
+                    break;
+            }
+        }
 
+        internal void deleteCommand()
+        {
+            Team team = SelectedTreeObject as Team;
+            if (team != null)
+            {
+                Tree.Remove(team);
+            }
+            else
+            {
+                TeamMember member = SelectedTreeObject as TeamMember;
+                if (member != null)
+                {
+                    Team t = member.Parent as Team;
+                    t.Children.Remove(member);
+                }
             }
         }
 
@@ -98,6 +138,19 @@ namespace Teammanager.Core
             {
                 _tree = value;
                 Notify("Tree");
+            }
+        }
+
+        public object SelectedTreeObject
+        {
+            get
+            {
+                return _itemSelectHepler.CurrentObject;
+            }
+            set
+            {
+                _itemSelectHepler.CurrentObject = value;
+                Notify("SelectedTreeObject");
             }
         }
 

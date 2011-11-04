@@ -2,40 +2,65 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Team Manager" MinHeight="300" MinWidth="600" Height="400" Width="600"
-        Background="White"
+        Background="#80A0AAFA"
         FontSize="13">
     <Grid>
         <DockPanel>
-            <Menu DockPanel.Dock="Top" Height="auto" IsManipulationEnabled="True" BorderThickness="1" BorderBrush="Black">
+            <Menu DockPanel.Dock="Top" Height="auto" IsManipulationEnabled="True" BorderThickness="0" BorderBrush="Black">
                 <Menu.Background>
                     <LinearGradientBrush StartPoint="0.0,0.0" EndPoint="0.0,1.0">
-                        <GradientStop Color="#FFFFFFFF" Offset="1.0"/>
-                        <GradientStop Color="#F0A0AAFA" Offset="0.5"/>
-                        <GradientStop Color="#FFFFFFFF" Offset="0.0"/>
+                        <GradientStop Color="#80A0AAFA" Offset="0.0"/>
+                        <!--<GradientStop Color="#80A0AAFA" Offset="0.0"/>
+                        <GradientStop Color="#FFFFFFFF" Offset="0.2"/>
+                        <GradientStop Color="#F0A0AAFA" Offset="0.7"/>-->
                     </LinearGradientBrush>
                 </Menu.Background>
                 <MenuItem Header="File">
+                    <MenuItem Header="Save"/>
+                    <MenuItem Header="Exit"/>
+                </MenuItem>
+                <MenuItem Header="Actions">
                     <MenuItem Header="Add Team" Command="{Binding MenuCommands}" CommandParameter="addTeam"/>
+                    <MenuItem Header="Add Team Member" Command="{Binding MenuCommands}" CommandParameter="addTeamMember"/>
+                    <MenuItem Header="Remove Item" Command="{Binding MenuCommands}" CommandParameter="deleteItem"/>
                 </MenuItem>
                 <MenuItem Header="About">
                     <MenuItem Header="Licence"/>
                     <MenuItem Header="Version"/>
                 </MenuItem>
             </Menu>
+            <ToolBar DockPanel.Dock="Top">
+                <ToolBar.Background>
+                    <LinearGradientBrush StartPoint="0.0,0.0" EndPoint="0.0,1.0">
+                        <GradientStop Color="#F0A0AAFA" Offset="0.0"/>
+                        <GradientStop Color="#FFFFFFFF" Offset="0.2"/>
+                        <GradientStop Color="#F0A0AAFA" Offset="0.7"/>
+                    </LinearGradientBrush>
+                </ToolBar.Background>
+                <Button Content="Save" Command="{Binding MenuBarCommands}"/>
+                <Button Content="Commit" Command="{Binding MenuBarCommands}"/>
+                <Separator/>
+                <Button Content="Add Team" Command="{Binding MenuBarCommands}" CommandParameter="addTeam"/>
+                <Button Content="Add Team Member" Command="{Binding MenuBarCommands}" CommandParameter="addTeamMember"/>
+                <Button Content="Remove Item" Command="{Binding MenuBarCommands}" CommandParameter="deleteItem"/>
+            </ToolBar>
             <Grid DockPanel.Dock="Top" Margin="0">
                 <Grid.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="White" Offset="0.6"/>
-                        <GradientStop Color="#F0A0AAFA" Offset="1.0"/>
+                        <!--<GradientStop Color="White" Offset="0.6"/>-->
+                        <GradientStop Color="#80A0AAFA" Offset="0.4"/>
+                        <GradientStop Color="LightGray" Offset="1.0"/>
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                    <TreeView BorderThickness="0" Grid.Column="0" ItemsSource="{Binding Tree}">
+                <Border Margin="5,5,0,5" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="0" Grid.ColumnSpan="1"/>
+                <Grid Grid.Column="0" Margin="5,5,0,5">
+                <TreeView Name="tree" BorderThickness="0" Background="#10A0AAFA" ItemsSource="{Binding Tree}">
                     <TreeView.InputBindings>
-                        <KeyBinding Command="{Binding TreeViewCommands}" CommandParameter="deleteItem"/>
+                        <KeyBinding Command="{Binding TreeViewCommands}" Key="del" CommandParameter="deleteItem"/>
                     </TreeView.InputBindings>
                     <TreeView.ItemContainerStyle>
                         <Style TargetType="{x:Type TreeViewItem}">
@@ -49,6 +74,7 @@
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
+                </Grid>
                 <Grid Grid.Column="1" Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
