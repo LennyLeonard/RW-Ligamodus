@@ -73,7 +73,14 @@
                             <TextBlock Text="{Binding Name}"/>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
-                </TreeView>
+                        <TreeView.ContextMenu>
+                            <ContextMenu ItemsSource="{Binding ContextMenuItems}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                <!--<ContextMenu.ItemTemplateSelector>
+                                    <dahelper:QuickViewContextMenuTemplateSelectorCommandItemTemplate="{StaticResourceContextMenuCommandTemplate}"QuickViewTemplate="{StaticResourceContextMenuQuickViewTemplate}"/>
+                                </ContextMenu.ItemTemplateSelector>-->
+                                </ContextMenu>
+                        </TreeView.ContextMenu>
+                    </TreeView>
                 </Grid>
                 <Grid Grid.Column="1" Margin="10">
                     <Grid.ColumnDefinitions>
