@@ -99,8 +99,15 @@
       <Name>Teammanager.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="resources\" />
+    <Resource Include="resources\images\commit.png" />
+    <Resource Include="resources\images\folder.png" />
+    <Resource Include="resources\images\group_add.png" />
+    <Resource Include="resources\images\group_delete.png" />
+    <Resource Include="resources\images\save.png" />
+    <Resource Include="resources\images\settings.png" />
+    <Resource Include="resources\images\user_add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

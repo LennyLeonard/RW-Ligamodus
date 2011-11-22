@@ -4,9 +4,31 @@
         xmlns:local="clr-namespace:Teammanager.View"
         Title="Team Manager" MinHeight="300" MinWidth="600" Height="400" Width="600"
         Background="#80A0AAFA"
+        Foreground="Black"
         FontSize="13">
     <Window.Resources>
-        <!--<local:TemplateSelector TeamTemplate="{StaticResource addme}" TeamMemberTemplate="{StaticResource addme}"/>-->
+        <DataTemplate x:Key="TeamMenuTemplate">
+            <MenuItem Command="" CommandParameter="">
+                <MenuItem.Header>
+                    <DockPanel HorizontalAlignment="Stretch">
+                        <!--<Image Source="{Binding ItemIconDestination}" Height="30" DockPanel.Dock="Left"/>
+                        <Label Content="{Binding ItemText}" VerticalAlignment="Center"/>-->
+                        <Label Content="Demo"/>
+                    </DockPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </DataTemplate>
+        <DataTemplate x:Key="TeamMemberMenuTemplate">
+            <MenuItem Command="" CommandParameter="">
+                <MenuItem.Header>
+                    <DockPanel HorizontalAlignment="Stretch">
+                        <!--<Image Source="{Binding ItemIconDestination}" Height="30" DockPanel.Dock="Left"/>
+                        <Label Content="{Binding ItemText}" VerticalAlignment="Center"/>-->
+                        <Label Content="Test"/>
+                    </DockPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <DockPanel>
@@ -19,18 +41,18 @@
                         <GradientStop Color="#F0A0AAFA" Offset="0.7"/>-->
                     </LinearGradientBrush>
                 </Menu.Background>
-                <MenuItem Header="File">
-                    <MenuItem Header="Save"/>
-                    <MenuItem Header="Exit"/>
+                <MenuItem Header="File" Foreground="White">
+                    <MenuItem Header="Save" Foreground="Black"/>
+                    <MenuItem Header="Exit" Foreground="Black"/>
                 </MenuItem>
-                <MenuItem Header="Actions">
-                    <MenuItem Header="Add Team" Command="{Binding MenuCommands}" CommandParameter="addTeam"/>
-                    <MenuItem Header="Add Team Member" Command="{Binding MenuCommands}" CommandParameter="addTeamMember"/>
-                    <MenuItem Header="Remove Item" Command="{Binding MenuCommands}" CommandParameter="deleteItem"/>
+                <MenuItem Header="Actions" Foreground="White">
+                    <MenuItem Header="Add Team" Command="{Binding MenuCommands}" CommandParameter="addTeam" Foreground="Black"/>
+                    <MenuItem Header="Add Team Member" Command="{Binding MenuCommands}" CommandParameter="addTeamMember" Foreground="Black"/>
+                    <MenuItem Header="Remove Item" Command="{Binding MenuCommands}" CommandParameter="deleteItem" Foreground="Black"/>
                 </MenuItem>
-                <MenuItem Header="About">
-                    <MenuItem Header="Licence"/>
-                    <MenuItem Header="Version"/>
+                <MenuItem Header="About" Foreground="White">
+                    <MenuItem Header="Licence" Foreground="Black"/>
+                    <MenuItem Header="Version" Foreground="Black"/>
                 </MenuItem>
             </Menu>
             <ToolBar DockPanel.Dock="Top">
@@ -41,17 +63,26 @@
                         <GradientStop Color="#F0A0AAFA" Offset="0.7"/>
                     </LinearGradientBrush>
                 </ToolBar.Background>
-                <Button Content="Save" Command="{Binding MenuBarCommands}"/>
-                <Button Content="Commit" Command="{Binding MenuBarCommands}"/>
+                <Button ToolTip="Save" Command="{Binding MenuBarCommands}">
+                    <Image Height="24" Source="resources/images/save.png"/>
+                </Button>
+                <Button ToolTip="Commit" Command="{Binding MenuBarCommands}">
+                    <Image Height="24" Source="resources/images/commit.png"/>
+                </Button>
                 <Separator/>
-                <Button Content="Add Team" Command="{Binding MenuBarCommands}" CommandParameter="addTeam"/>
-                <Button Content="Add Team Member" Command="{Binding MenuBarCommands}" CommandParameter="addTeamMember"/>
-                <Button Content="Remove Item" Command="{Binding MenuBarCommands}" CommandParameter="deleteItem"/>
+                <Button ToolTip="Add Team" Command="{Binding MenuBarCommands}" CommandParameter="addTeam">
+                    <Image Height="24" Source="resources/images/group_add.png"/>
+                </Button>
+                <Button ToolTip="Add Team Member" Command="{Binding MenuBarCommands}" CommandParameter="addTeamMember">
+                    <Image Height="24" Source="resources/images/user_add.png"/>
+                </Button>
+                <Button ToolTip="Remove Item" Command="{Binding MenuBarCommands}" CommandParameter="deleteItem">
+                    <Image Height="24" Source="resources/images/group_delete.png"/>
+                </Button>
             </ToolBar>
             <Grid DockPanel.Dock="Top" Margin="0">
                 <Grid.Background>
                     <LinearGradientBrush>
-                        <!--<GradientStop Color="White" Offset="0.6"/>-->
                         <GradientStop Color="#80A0AAFA" Offset="0.4"/>
                         <GradientStop Color="LightGray" Offset="1.0"/>
                     </LinearGradientBrush>
@@ -79,9 +110,10 @@
                     </TreeView.ItemTemplate>
                         <TreeView.ContextMenu>
                             <ContextMenu ItemsSource="{Binding ContextMenuItems}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                                <!--<ContextMenu.ItemTemplateSelector>
-                                    <dahelper:QuickViewContextMenuTemplateSelectorCommandItemTemplate="{StaticResourceContextMenuCommandTemplate}"QuickViewTemplate="{StaticResourceContextMenuQuickViewTemplate}"/>
-                                </ContextMenu.ItemTemplateSelector>-->
+                                <ContextMenu.ItemTemplateSelector>
+                                    <local:TemplateSelector TeamMemberTemplate="{StaticResource TeamMemberMenuTemplate}" TeamTemplate="{StaticResource TeamMenuTemplate}"/>
+                                    <!--<dahelper:QuickViewContextMenuTemplateSelector CommandItemTemplate="{StaticResource TeamMemberMenuTemplate}" QuickViewTemplate="{StaticResource TeamMenuTemplate}"/>-->
+                                </ContextMenu.ItemTemplateSelector>
                                 </ContextMenu>
                         </TreeView.ContextMenu>
                     </TreeView>

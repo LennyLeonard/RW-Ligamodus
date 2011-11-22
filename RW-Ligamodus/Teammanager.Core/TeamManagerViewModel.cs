@@ -47,7 +47,19 @@ namespace Teammanager.Core
         {
             switch (parameter as string)
             {
-
+                case "addTeam":
+                    Tree.Add(new Team(null, "The A Team"));
+                    break;
+                case "addTeamMember":
+                    Team t = SelectedTreeObject as Team;
+                    if (t != null)
+                    {
+                        t.Children.Add(new TeamMember(t, "B.A. Barakuda"));
+                    }
+                    break;
+                case "deleteItem":
+                    this.deleteCommand();
+                    break;
             }
         }
 
