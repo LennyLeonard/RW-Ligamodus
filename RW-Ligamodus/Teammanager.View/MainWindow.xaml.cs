@@ -16,14 +16,12 @@ namespace Teammanager.View
             this.tree.SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(tree_SelectedItemChanged);
             teamManagerViewModel = new Core.TeamManagerViewModel();
             this.DataContext = teamManagerViewModel;
+            //teamManagerViewModel.Tree.CollectionChanged +=new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Tree_CollectionChanged);
         }
 
         void tree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             teamManagerViewModel.SelectedTreeObject = e.NewValue;
         }
-
-
-
     }
 }

@@ -1,34 +1,13 @@
 ﻿<Window x:Class="Teammanager.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:core="clr-namespace:Teammanager.Core;assembly=Teammanager.Core"
         xmlns:local="clr-namespace:Teammanager.View"
         Title="Team Manager" MinHeight="300" MinWidth="600" Height="400" Width="600"
         Background="#80A0AAFA"
         Foreground="Black"
         FontSize="13">
     <Window.Resources>
-        <DataTemplate x:Key="TeamMenuTemplate">
-            <MenuItem Command="" CommandParameter="">
-                <MenuItem.Header>
-                    <DockPanel HorizontalAlignment="Stretch">
-                        <!--<Image Source="{Binding ItemIconDestination}" Height="30" DockPanel.Dock="Left"/>
-                        <Label Content="{Binding ItemText}" VerticalAlignment="Center"/>-->
-                        <Label Content="Demo"/>
-                    </DockPanel>
-                </MenuItem.Header>
-            </MenuItem>
-        </DataTemplate>
-        <DataTemplate x:Key="TeamMemberMenuTemplate">
-            <MenuItem Command="" CommandParameter="">
-                <MenuItem.Header>
-                    <DockPanel HorizontalAlignment="Stretch">
-                        <!--<Image Source="{Binding ItemIconDestination}" Height="30" DockPanel.Dock="Left"/>
-                        <Label Content="{Binding ItemText}" VerticalAlignment="Center"/>-->
-                        <Label Content="Test"/>
-                    </DockPanel>
-                </MenuItem.Header>
-            </MenuItem>
-        </DataTemplate>
     </Window.Resources>
     <Grid>
         <DockPanel>
@@ -55,7 +34,7 @@
                     <MenuItem Header="Version" Foreground="Black"/>
                 </MenuItem>
             </Menu>
-            <ToolBar DockPanel.Dock="Top">
+            <ToolBar DockPanel.Dock="Top" Width="auto">
                 <ToolBar.Background>
                     <LinearGradientBrush StartPoint="0.0,0.0" EndPoint="0.0,1.0">
                         <GradientStop Color="#F0A0AAFA" Offset="0.0"/>
@@ -103,19 +82,30 @@
                             <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
                         </Style>
                     </TreeView.ItemContainerStyle>
-                    <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                            <TextBlock Text="{Binding Name}"/>
-                        </HierarchicalDataTemplate>
-                    </TreeView.ItemTemplate>
-                        <TreeView.ContextMenu>
-                            <ContextMenu ItemsSource="{Binding ContextMenuItems}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                                <ContextMenu.ItemTemplateSelector>
-                                    <local:TemplateSelector TeamMemberTemplate="{StaticResource TeamMemberMenuTemplate}" TeamTemplate="{StaticResource TeamMenuTemplate}"/>
-                                    <!--<dahelper:QuickViewContextMenuTemplateSelector CommandItemTemplate="{StaticResource TeamMemberMenuTemplate}" QuickViewTemplate="{StaticResource TeamMenuTemplate}"/>-->
-                                </ContextMenu.ItemTemplateSelector>
-                                </ContextMenu>
-                        </TreeView.ContextMenu>
+                        <TreeView.Resources>
+                            <HierarchicalDataTemplate DataType="{x:Type core:Team}" ItemsSource="{Binding Children}">
+                                <DockPanel HorizontalAlignment="Stretch">
+                                    <DockPanel.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Rename" Command="{Binding TreeCommands}" CommandParameter="rename"/>
+                                        </ContextMenu>
+                                    </DockPanel.ContextMenu>
+                                    <Image Height="15" Source="resources/images/group.png"/>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DockPanel>
+                            </HierarchicalDataTemplate>
+                            <HierarchicalDataTemplate DataType="{x:Type core:TeamMember}" ItemsSource="{Binding Children}">
+                                <DockPanel HorizontalAlignment="Stretch">
+                                    <DockPanel.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="Rename" Command="{Binding TreeCommands}" CommandParameter="rename"/>
+                                        </ContextMenu>
+                                    </DockPanel.ContextMenu>
+                                    <Image Height="15" Source="resources/images/user.png"/>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </DockPanel>
+                            </HierarchicalDataTemplate>
+                        </TreeView.Resources>
                     </TreeView>
                 </Grid>
                 <Grid Grid.Column="1" Margin="10">

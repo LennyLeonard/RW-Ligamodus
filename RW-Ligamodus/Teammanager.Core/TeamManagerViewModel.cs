@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace Teammanager.Core
 {
@@ -18,7 +19,6 @@ namespace Teammanager.Core
             _treeViewHelper = new CommandHelper(commandTreeView);
             _itemSelectHepler = new ItemSelectHelper();
             _tree = new ObservableCollection<TreeViewChildrenViewModel>();
-
         }
 
 

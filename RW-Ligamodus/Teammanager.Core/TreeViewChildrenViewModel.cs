@@ -7,6 +7,7 @@ namespace Teammanager.Core
         private readonly string _Name;
         private ObservableCollection<TreeViewChildrenViewModel> _Children;
         private bool _isSelected;
+        //private string _iconPath;
 
         internal protected TreeViewChildrenViewModel(TreeViewChildrenViewModel parent, string name)
         {
@@ -26,6 +27,20 @@ namespace Teammanager.Core
             }
         }
 
+        /*
+        public string ImageSourcePath
+        {
+            get
+            {
+                return _iconPath;
+            }
+            set
+            {
+                _iconPath = value;
+                Notify("ImageSourcePath");
+            }
+        }
+        */
 
         public ObservableCollection<TreeViewChildrenViewModel> Children
         {

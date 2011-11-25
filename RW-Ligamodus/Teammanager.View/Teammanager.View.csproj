@@ -55,7 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TemplateSelector.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,7 +98,10 @@
       <Name>Teammanager.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="resources\images\group.png" />
+    <Resource Include="resources\images\user.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="resources\images\commit.png" />
     <Resource Include="resources\images\folder.png" />
