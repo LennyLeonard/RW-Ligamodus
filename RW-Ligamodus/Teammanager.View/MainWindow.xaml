@@ -1,37 +1,66 @@
 ﻿<Window x:Class="Teammanager.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:Teammanager.View.Properties"
         xmlns:core="clr-namespace:Teammanager.Core;assembly=Teammanager.Core"
         xmlns:local="clr-namespace:Teammanager.View"
         Title="Team Manager" MinHeight="300" MinWidth="600" Height="400" Width="600"
         Background="#80A0AAFA"
         Foreground="Black"
         FontSize="13">
-    <Window.Resources>
-    </Window.Resources>
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top" Height="auto" IsManipulationEnabled="True" BorderThickness="0" BorderBrush="Black">
                 <Menu.Background>
                     <LinearGradientBrush StartPoint="0.0,0.0" EndPoint="0.0,1.0">
                         <GradientStop Color="#80A0AAFA" Offset="0.0"/>
-                        <!--<GradientStop Color="#80A0AAFA" Offset="0.0"/>
-                        <GradientStop Color="#FFFFFFFF" Offset="0.2"/>
-                        <GradientStop Color="#F0A0AAFA" Offset="0.7"/>-->
                     </LinearGradientBrush>
                 </Menu.Background>
-                <MenuItem Header="File" Foreground="White">
-                    <MenuItem Header="Save" Foreground="Black"/>
-                    <MenuItem Header="Exit" Foreground="Black"/>
+                <MenuItem Header="{x:Static p:Resources.file}" Foreground="White">
+                    <MenuItem Header="{x:Static p:Resources.save}" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Height="18" Source="resources/images/save.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.commit}" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Height="18" Source="resources/images/commit.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.exit}" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Height="18" Source="resources/images/exit.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Actions" Foreground="White">
-                    <MenuItem Header="Add Team" Command="{Binding MenuCommands}" CommandParameter="addTeam" Foreground="Black"/>
-                    <MenuItem Header="Add Team Member" Command="{Binding MenuCommands}" CommandParameter="addTeamMember" Foreground="Black"/>
-                    <MenuItem Header="Remove Item" Command="{Binding MenuCommands}" CommandParameter="deleteItem" Foreground="Black"/>
+                <MenuItem Header="{x:Static p:Resources.actions}" Foreground="White">
+                    <MenuItem Header="{x:Static p:Resources.add_team}" Command="{Binding MenuCommands}" CommandParameter="addTeam" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Height="18" Source="resources/images/group_add.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.add_teamMember}" Command="{Binding MenuCommands}" CommandParameter="addTeamMember" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Height="18" Source="resources/images/user_add.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.remove_item}" Command="{Binding MenuCommands}" CommandParameter="deleteItem" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Height="18" Source="resources/images/group_delete.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
-                <MenuItem Header="About" Foreground="White">
-                    <MenuItem Header="Licence" Foreground="Black"/>
-                    <MenuItem Header="Version" Foreground="Black"/>
+                <MenuItem Header="{x:Static p:Resources.about}" Foreground="White">
+                    <MenuItem Header="{x:Static p:Resources.licence}" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Height="18" Source="resources/images/license.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.version}" Foreground="Black">
+                        <MenuItem.Icon>
+                            <Image Height="18" Source="resources/images/info.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
             </Menu>
             <ToolBar DockPanel.Dock="Top" Width="auto">
@@ -42,20 +71,20 @@
                         <GradientStop Color="#F0A0AAFA" Offset="0.7"/>
                     </LinearGradientBrush>
                 </ToolBar.Background>
-                <Button ToolTip="Save" Command="{Binding MenuBarCommands}">
+                <Button ToolTip="{x:Static p:Resources.save}" Command="{Binding MenuBarCommands}">
                     <Image Height="24" Source="resources/images/save.png"/>
                 </Button>
-                <Button ToolTip="Commit" Command="{Binding MenuBarCommands}">
+                <Button ToolTip="{x:Static p:Resources.commit}" Command="{Binding MenuBarCommands}">
                     <Image Height="24" Source="resources/images/commit.png"/>
                 </Button>
                 <Separator/>
-                <Button ToolTip="Add Team" Command="{Binding MenuBarCommands}" CommandParameter="addTeam">
+                <Button ToolTip="{x:Static p:Resources.add_team}" Command="{Binding MenuBarCommands}" CommandParameter="addTeam">
                     <Image Height="24" Source="resources/images/group_add.png"/>
                 </Button>
-                <Button ToolTip="Add Team Member" Command="{Binding MenuBarCommands}" CommandParameter="addTeamMember">
+                <Button ToolTip="{x:Static p:Resources.add_teamMember}" Command="{Binding MenuBarCommands}" CommandParameter="addTeamMember">
                     <Image Height="24" Source="resources/images/user_add.png"/>
                 </Button>
-                <Button ToolTip="Remove Item" Command="{Binding MenuBarCommands}" CommandParameter="deleteItem">
+                <Button ToolTip="{x:Static p:Resources.remove_item}" Command="{Binding MenuBarCommands}" CommandParameter="deleteItem">
                     <Image Height="24" Source="resources/images/group_delete.png"/>
                 </Button>
             </ToolBar>
@@ -87,7 +116,8 @@
                                 <DockPanel HorizontalAlignment="Stretch">
                                     <DockPanel.ContextMenu>
                                         <ContextMenu>
-                                            <MenuItem Header="Rename" Command="{Binding TreeCommands}" CommandParameter="rename"/>
+                                            <MenuItem Header="{x:Static p:Resources.rename}" Command="{Binding TreeCommands}" CommandParameter="rename"/>
+                                            <MenuItem Header=""/>
                                         </ContextMenu>
                                     </DockPanel.ContextMenu>
                                     <Image Height="15" Source="resources/images/group.png"/>
@@ -98,7 +128,10 @@
                                 <DockPanel HorizontalAlignment="Stretch">
                                     <DockPanel.ContextMenu>
                                         <ContextMenu>
-                                            <MenuItem Header="Rename" Command="{Binding TreeCommands}" CommandParameter="rename"/>
+                                            <MenuItem Header="{x:Static p:Resources.rename}" Command="{Binding TreeCommands}" CommandParameter="rename"/>
+                                            <MenuItem Header="To Position">
+                                                <MenuItem Header="Position 1"/>
+                                            </MenuItem>
                                         </ContextMenu>
                                     </DockPanel.ContextMenu>
                                     <Image Height="15" Source="resources/images/user.png"/>
@@ -127,23 +160,23 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Home:" FontSize="16" FontWeight="Bold"/>
-                        <TextBlock Grid.Row="1" Text="SV DidNotMatch" FontSize="16" TextWrapping="Wrap" FontStyle="Italic"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.home}" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Grid.Row="1" Text="{Binding SelectedHomeTeam}" FontSize="16" TextWrapping="Wrap" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Visitor:" FontSize="16" FontWeight="Bold"/>
-                        <TextBlock Grid.Row="1" Text="SV Team Beta" FontSize="16" TextWrapping="Wrap" FontStyle="Italic"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.visitor}" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Grid.Row="1" Text="{Binding SelectedVisitorTeam}" FontSize="16" TextWrapping="Wrap" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 1:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_1}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="1">
@@ -151,7 +184,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 2:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_2}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
@@ -159,7 +192,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 3:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_3}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="2">
@@ -167,7 +200,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 4:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_4}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="3">
@@ -175,7 +208,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 5:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_5}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="3">
@@ -183,7 +216,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 6:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_6}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="4">
@@ -191,7 +224,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 7:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_7}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="4">
@@ -199,7 +232,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 8:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_8}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="5">
@@ -207,7 +240,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 9:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_9}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="5">
@@ -215,7 +248,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="Position 10:"/>
+                        <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_10}"/>
                         <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                 </Grid>

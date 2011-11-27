@@ -118,75 +118,75 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="about" xml:space="preserve">
-    <value>About</value>
+    <value>Info</value>
   </data>
   <data name="actions" xml:space="preserve">
-    <value>Actions</value>
+    <value>Aktionen</value>
   </data>
   <data name="add_team" xml:space="preserve">
-    <value>Add team</value>
+    <value>Mannschaft hinzufügen</value>
   </data>
   <data name="add_teamMember" xml:space="preserve">
-    <value>Add team member</value>
+    <value>Schütze hinzufügen</value>
   </data>
   <data name="commit" xml:space="preserve">
-    <value>Commit</value>
+    <value>Übergeben</value>
   </data>
   <data name="exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>Beenden</value>
   </data>
   <data name="file" xml:space="preserve">
-    <value>File</value>
+    <value>Datei</value>
   </data>
   <data name="home" xml:space="preserve">
-    <value>Home:</value>
+    <value>Heimmannschaft:</value>
   </data>
   <data name="licence" xml:space="preserve">
-    <value>Licence</value>
+    <value>Lizenz</value>
   </data>
   <data name="pos_1" xml:space="preserve">
-    <value>Position 1:</value>
+    <value>Stand 1:</value>
   </data>
   <data name="pos_10" xml:space="preserve">
-    <value>Position 10:</value>
+    <value>Stand 10:</value>
   </data>
   <data name="pos_2" xml:space="preserve">
-    <value>Position 2:</value>
+    <value>Stand 2:</value>
   </data>
   <data name="pos_3" xml:space="preserve">
-    <value>Position 3:</value>
+    <value>Stand 3:</value>
   </data>
   <data name="pos_4" xml:space="preserve">
-    <value>Position 4:</value>
+    <value>Stand 4:</value>
   </data>
   <data name="pos_5" xml:space="preserve">
-    <value>Position 5:</value>
+    <value>Stand 5:</value>
   </data>
   <data name="pos_6" xml:space="preserve">
-    <value>Position 6:</value>
+    <value>Stand 6:</value>
   </data>
   <data name="pos_7" xml:space="preserve">
-    <value>Position 7:</value>
+    <value>Stand 7:</value>
   </data>
   <data name="pos_8" xml:space="preserve">
-    <value>Position 8:</value>
+    <value>Stand 8:</value>
   </data>
   <data name="pos_9" xml:space="preserve">
-    <value>Position 9:</value>
+    <value>Stand 9:</value>
   </data>
   <data name="remove_item" xml:space="preserve">
-    <value>Remove item</value>
+    <value>Element entfernen</value>
   </data>
   <data name="rename" xml:space="preserve">
-    <value>Rename</value>
+    <value>Umbenennen</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Save</value>
+    <value>Speichern</value>
   </data>
   <data name="version" xml:space="preserve">
     <value>Version</value>
   </data>
   <data name="visitor" xml:space="preserve">
-    <value>Visitor:</value>
+    <value>Gastmannschaft:</value>
   </data>
 </root>

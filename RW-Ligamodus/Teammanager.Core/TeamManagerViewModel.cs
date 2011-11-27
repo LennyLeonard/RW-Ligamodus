@@ -8,7 +8,6 @@ namespace Teammanager.Core
     {
         private CommandHelper _menuHelper;
         private CommandHelper _menuBarHelper;
-        private CommandHelper _treeViewHelper;
         private ItemSelectHelper _itemSelectHepler;
         private ObservableCollection<TreeViewChildrenViewModel> _tree;
 
@@ -16,7 +15,6 @@ namespace Teammanager.Core
         {
             _menuHelper = new CommandHelper(commandMenu);
             _menuBarHelper = new CommandHelper(commandMenuBar);
-            _treeViewHelper = new CommandHelper(commandTreeView);
             _itemSelectHepler = new ItemSelectHelper();
             _tree = new ObservableCollection<TreeViewChildrenViewModel>();
         }
@@ -63,22 +61,7 @@ namespace Teammanager.Core
             }
         }
 
-        public void commandTreeView(object parameter)
-        {
-            switch (parameter as string)
-            {
-                case "addTeam":
-                    Tree.Add(new Team(null, "The A Team"));
-                    break;
-                case "addTeamMember":
-                    Team t = SelectedTreeObject as Team;
-                    t.Children.Add(new TeamMember(t, "B.A. Barakuda"));
-                    break;
-                case "deleteItem":
-                    this.deleteCommand();
-                    break;
-            }
-        }
+        
 
         internal void deleteCommand()
         {
@@ -127,19 +110,6 @@ namespace Teammanager.Core
             }
         }
 
-        public CommandHelper TreeViewCommands
-        {
-            get
-            {
-                return _treeViewHelper;
-            }
-            set
-            {
-                _treeViewHelper = value;
-                Notify("TreeViewCommands");
-            }
-        }
-
         public ObservableCollection<TreeViewChildrenViewModel> Tree
         {
             get
@@ -163,6 +133,30 @@ namespace Teammanager.Core
             {
                 _itemSelectHepler.CurrentObject = value;
                 Notify("SelectedTreeObject");
+            }
+        }
+
+        public string SelectedHomeTeam
+        {
+            get
+            {
+                return string.Empty;
+            }
+            set
+            {
+                Notify("SelectedHomeTeam");
+            }
+        }
+
+        public string SelectedVisitorTeam
+        {
+            get
+            {
+                return string.Empty;
+            }
+            set
+            {
+                Notify("SelectedVisitorTeam");
             }
         }
 

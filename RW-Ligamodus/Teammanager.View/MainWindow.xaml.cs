@@ -1,5 +1,6 @@
-﻿using System.Windows;
-using Teammanager.Core;
+﻿using System.Globalization;
+using System.Windows;
+using Teammanager.View.Properties;
 
 namespace Teammanager.View
 {
@@ -13,10 +14,13 @@ namespace Teammanager.View
         public MainWindow()
         {
             InitializeComponent();
+            //get current cultureinfo for language texts
+            CultureInfo cultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+            Teammanager.View.Properties.Resources.Culture =cultureInfo;
             this.tree.SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(tree_SelectedItemChanged);
             teamManagerViewModel = new Core.TeamManagerViewModel();
             this.DataContext = teamManagerViewModel;
-            //teamManagerViewModel.Tree.CollectionChanged +=new System.Collections.Specialized.NotifyCollectionChangedEventHandler(Tree_CollectionChanged);
+            
         }
 
         void tree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
