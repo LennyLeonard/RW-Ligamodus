@@ -19,7 +19,7 @@ namespace Teammanager.Core
             switch (parameter as string)
             {
                 case "rename":
-                    Name = "Face";
+                    IsEditing = true;
                     break;
                 case "deleteItem":
                     break;

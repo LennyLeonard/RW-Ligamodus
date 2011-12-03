@@ -4,7 +4,7 @@
         xmlns:p="clr-namespace:Teammanager.View.Properties"
         xmlns:core="clr-namespace:Teammanager.Core;assembly=Teammanager.Core"
         xmlns:local="clr-namespace:Teammanager.View"
-        Title="Team Manager" MinHeight="300" MinWidth="600" Height="400" Width="600"
+        Title="Team Manager" MinHeight="450" MinWidth="650" Height="500" Width="650"
         Background="#80A0AAFA"
         Foreground="Black"
         FontSize="13">
@@ -96,8 +96,8 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
                 <Border Margin="5,5,0,5" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="0" Grid.ColumnSpan="1"/>
                 <Grid Grid.Column="0" Margin="5,5,0,5">
@@ -116,27 +116,69 @@
                                 <DockPanel HorizontalAlignment="Stretch">
                                     <DockPanel.ContextMenu>
                                         <ContextMenu>
+                                            <MenuItem Header="{x:Static p:Resources.add_teamMember}" Command="{Binding TreeCommands}" CommandParameter="addTeamMember"/>
+                                            <MenuItem Header="{x:Static p:Resources.setAs}">
+                                                <MenuItem Header="{x:Static p:Resources.homeTeam}" Command="{Binding TreeCommands}" CommandParameter="setAsHome"/>
+                                                <MenuItem Header="{x:Static p:Resources.visitorTeam}" Command="{Binding TreeCommands}" CommandParameter="setAsVisitor"/>
+                                            </MenuItem>
                                             <MenuItem Header="{x:Static p:Resources.rename}" Command="{Binding TreeCommands}" CommandParameter="rename"/>
-                                            <MenuItem Header=""/>
+                                            <MenuItem Header="{x:Static p:Resources.addEmblem}" Command="{Binding TreeCommands}" CommandParameter="addEmblem"/>
+                                            <MenuItem Header="{x:Static p:Resources.remove_item}" Command="{Binding TreeCommands}" CommandParameter="delete"/>
                                         </ContextMenu>
                                     </DockPanel.ContextMenu>
                                     <Image Height="15" Source="resources/images/group.png"/>
-                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock x:Name="tb" Margin="5,0,0,0" Text="{Binding Name}"/>
+                                    <TextBox x:Name="etb" Background="White" BorderThickness="0" Visibility="Collapsed" Text="{Binding Name, UpdateSourceTrigger=LostFocus}"/>
                                 </DockPanel>
+                                <HierarchicalDataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding IsEditing}" Value="True">
+                                        <Setter TargetName="tb" Property="Visibility" Value="Collapsed" />
+                                        <Setter TargetName="etb" Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsEditing}" Value="False">
+                                        <Setter TargetName="etb" Property="Visibility" Value="Collapsed" />
+                                        <Setter TargetName="tb" Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </HierarchicalDataTemplate.Triggers>
                             </HierarchicalDataTemplate>
                             <HierarchicalDataTemplate DataType="{x:Type core:TeamMember}" ItemsSource="{Binding Children}">
                                 <DockPanel HorizontalAlignment="Stretch">
                                     <DockPanel.ContextMenu>
                                         <ContextMenu>
-                                            <MenuItem Header="{x:Static p:Resources.rename}" Command="{Binding TreeCommands}" CommandParameter="rename"/>
-                                            <MenuItem Header="To Position">
-                                                <MenuItem Header="Position 1"/>
+                                            <MenuItem Header="{x:Static p:Resources.to_pos}">
+                                                <MenuItem Header="{x:Static p:Resources.pos1}" Command="{Binding TreeCommands}" CommandParameter="toPos1"/>
+                                                <MenuItem Header="{x:Static p:Resources.pos2}" Command="{Binding TreeCommands}" CommandParameter="toPos2"/>
+                                                <MenuItem Header="{x:Static p:Resources.pos3}" Command="{Binding TreeCommands}" CommandParameter="toPos3"/>
+                                                <MenuItem Header="{x:Static p:Resources.pos4}" Command="{Binding TreeCommands}" CommandParameter="toPos4"/>
+                                                <MenuItem Header="{x:Static p:Resources.pos5}" Command="{Binding TreeCommands}" CommandParameter="toPos5"/>
+                                                <MenuItem Header="{x:Static p:Resources.pos6}" Command="{Binding TreeCommands}" CommandParameter="toPos6"/>
+                                                <MenuItem Header="{x:Static p:Resources.pos7}" Command="{Binding TreeCommands}" CommandParameter="toPos7"/>
+                                                <MenuItem Header="{x:Static p:Resources.pos8}" Command="{Binding TreeCommands}" CommandParameter="toPos8"/>
+                                                <MenuItem Header="{x:Static p:Resources.pos9}" Command="{Binding TreeCommands}" CommandParameter="toPos9"/>
+                                                <MenuItem Header="{x:Static p:Resources.pos10}" Command="{Binding TreeCommands}" CommandParameter="toPos10"/>
                                             </MenuItem>
+                                            <MenuItem Header="{x:Static p:Resources.rename}" Command="{Binding TreeCommands}" CommandParameter="rename"/>
+                                            <MenuItem Header="{x:Static p:Resources.move}">
+                                                <MenuItem Header="{x:Static p:Resources.up}" Command="{Binding TreeCommands}" CommandParameter="up"/>
+                                                <MenuItem Header="{x:Static p:Resources.down}" Command="{Binding TreeCommands}" CommandParameter="down"/>
+                                            </MenuItem>
+                                            <MenuItem Header="{x:Static p:Resources.remove_item}" Command="{Binding TreeCommands}" CommandParameter="delete"/>
                                         </ContextMenu>
                                     </DockPanel.ContextMenu>
                                     <Image Height="15" Source="resources/images/user.png"/>
-                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock x:Name="tb" Margin="5,0,0,0" Text="{Binding Name}"/>
+                                    <TextBox x:Name="etb" Background="White" BorderThickness="0" Visibility="Collapsed" Text="{Binding Name, UpdateSourceTrigger=LostFocus}"/>
                                 </DockPanel>
+                                <HierarchicalDataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding IsEditing}" Value="True">
+                                        <Setter TargetName="tb" Property="Visibility" Value="Collapsed" />
+                                        <Setter TargetName="etb" Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsEditing}" Value="False">
+                                        <Setter TargetName="etb" Property="Visibility" Value="Collapsed" />
+                                        <Setter TargetName="tb" Property="Visibility" Value="Visible" />
+                                    </DataTrigger>
+                                </HierarchicalDataTemplate.Triggers>
                             </HierarchicalDataTemplate>
                         </TreeView.Resources>
                     </TreeView>

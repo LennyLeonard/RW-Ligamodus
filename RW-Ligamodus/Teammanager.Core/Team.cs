@@ -20,7 +20,8 @@ namespace Teammanager.Core
         {
             switch (parameter as string)
             {
-                case "addTeam":
+                case "rename":
+                    IsEditing = true;
                     break;
                 case "addTeamMember":
                     break;

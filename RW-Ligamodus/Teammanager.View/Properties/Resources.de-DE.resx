@@ -123,6 +123,9 @@
   <data name="actions" xml:space="preserve">
     <value>Aktionen</value>
   </data>
+  <data name="addEmblem" xml:space="preserve">
+    <value>Wappen hinzufügen/ändern</value>
+  </data>
   <data name="add_team" xml:space="preserve">
     <value>Mannschaft hinzufügen</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="commit" xml:space="preserve">
     <value>Übergeben</value>
+  </data>
+  <data name="down" xml:space="preserve">
+    <value>nach unten</value>
   </data>
   <data name="exit" xml:space="preserve">
     <value>Beenden</value>
@@ -141,8 +147,44 @@
   <data name="home" xml:space="preserve">
     <value>Heimmannschaft:</value>
   </data>
+  <data name="homeTeam" xml:space="preserve">
+    <value>Heimmannschaft</value>
+  </data>
   <data name="licence" xml:space="preserve">
     <value>Lizenz</value>
+  </data>
+  <data name="move" xml:space="preserve">
+    <value>Verschieben</value>
+  </data>
+  <data name="pos1" xml:space="preserve">
+    <value>Stand 1</value>
+  </data>
+  <data name="pos10" xml:space="preserve">
+    <value>Stand 10</value>
+  </data>
+  <data name="pos2" xml:space="preserve">
+    <value>Stand 2</value>
+  </data>
+  <data name="pos3" xml:space="preserve">
+    <value>Stand 3</value>
+  </data>
+  <data name="pos4" xml:space="preserve">
+    <value>Stand 4</value>
+  </data>
+  <data name="pos5" xml:space="preserve">
+    <value>Stand 5</value>
+  </data>
+  <data name="pos6" xml:space="preserve">
+    <value>Stand 6</value>
+  </data>
+  <data name="pos7" xml:space="preserve">
+    <value>Stand 7</value>
+  </data>
+  <data name="pos8" xml:space="preserve">
+    <value>Stand 8</value>
+  </data>
+  <data name="pos9" xml:space="preserve">
+    <value>Stand 9</value>
   </data>
   <data name="pos_1" xml:space="preserve">
     <value>Stand 1:</value>
@@ -183,10 +225,22 @@
   <data name="save" xml:space="preserve">
     <value>Speichern</value>
   </data>
+  <data name="setAs" xml:space="preserve">
+    <value>Setzen als</value>
+  </data>
+  <data name="to_pos" xml:space="preserve">
+    <value>An Position</value>
+  </data>
+  <data name="up" xml:space="preserve">
+    <value>nach oben</value>
+  </data>
   <data name="version" xml:space="preserve">
     <value>Version</value>
   </data>
   <data name="visitor" xml:space="preserve">
     <value>Gastmannschaft:</value>
+  </data>
+  <data name="visitorTeam" xml:space="preserve">
+    <value>Gastmannschaft</value>
   </data>
 </root>

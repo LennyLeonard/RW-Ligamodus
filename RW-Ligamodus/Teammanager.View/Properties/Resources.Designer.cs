@@ -97,11 +97,29 @@ namespace Teammanager.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add/edit team emblem ähnelt.
+        /// </summary>
+        public static string addEmblem {
+            get {
+                return ResourceManager.GetString("addEmblem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Commit ähnelt.
         /// </summary>
         public static string commit {
             get {
                 return ResourceManager.GetString("commit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die down ähnelt.
+        /// </summary>
+        public static string down {
+            get {
+                return ResourceManager.GetString("down", resourceCulture);
             }
         }
         
@@ -133,11 +151,29 @@ namespace Teammanager.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Home ähnelt.
+        /// </summary>
+        public static string homeTeam {
+            get {
+                return ResourceManager.GetString("homeTeam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Licence ähnelt.
         /// </summary>
         public static string licence {
             get {
                 return ResourceManager.GetString("licence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Move ähnelt.
+        /// </summary>
+        public static string move {
+            get {
+                return ResourceManager.GetString("move", resourceCulture);
             }
         }
         
@@ -232,6 +268,96 @@ namespace Teammanager.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 1 ähnelt.
+        /// </summary>
+        public static string pos1 {
+            get {
+                return ResourceManager.GetString("pos1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 10 ähnelt.
+        /// </summary>
+        public static string pos10 {
+            get {
+                return ResourceManager.GetString("pos10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 2 ähnelt.
+        /// </summary>
+        public static string pos2 {
+            get {
+                return ResourceManager.GetString("pos2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 3 ähnelt.
+        /// </summary>
+        public static string pos3 {
+            get {
+                return ResourceManager.GetString("pos3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 4 ähnelt.
+        /// </summary>
+        public static string pos4 {
+            get {
+                return ResourceManager.GetString("pos4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 5 ähnelt.
+        /// </summary>
+        public static string pos5 {
+            get {
+                return ResourceManager.GetString("pos5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 6 ähnelt.
+        /// </summary>
+        public static string pos6 {
+            get {
+                return ResourceManager.GetString("pos6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 7 ähnelt.
+        /// </summary>
+        public static string pos7 {
+            get {
+                return ResourceManager.GetString("pos7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 8 ähnelt.
+        /// </summary>
+        public static string pos8 {
+            get {
+                return ResourceManager.GetString("pos8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Position 9 ähnelt.
+        /// </summary>
+        public static string pos9 {
+            get {
+                return ResourceManager.GetString("pos9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Remove item ähnelt.
         /// </summary>
         public static string remove_item {
@@ -259,6 +385,33 @@ namespace Teammanager.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set as ähnelt.
+        /// </summary>
+        public static string setAs {
+            get {
+                return ResourceManager.GetString("setAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Add to position ähnelt.
+        /// </summary>
+        public static string to_pos {
+            get {
+                return ResourceManager.GetString("to_pos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die up ähnelt.
+        /// </summary>
+        public static string up {
+            get {
+                return ResourceManager.GetString("up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Version ähnelt.
         /// </summary>
         public static string version {
@@ -273,6 +426,15 @@ namespace Teammanager.View.Properties {
         public static string visitor {
             get {
                 return ResourceManager.GetString("visitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Visitor ähnelt.
+        /// </summary>
+        public static string visitorTeam {
+            get {
+                return ResourceManager.GetString("visitorTeam", resourceCulture);
             }
         }
     }

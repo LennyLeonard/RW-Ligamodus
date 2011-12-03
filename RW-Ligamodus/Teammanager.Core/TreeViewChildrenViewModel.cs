@@ -7,6 +7,7 @@ namespace Teammanager.Core
         private string _Name;
         private ObservableCollection<TreeViewChildrenViewModel> _Children;
         private bool _isSelected;
+        private bool _renameCommand;
 
         internal protected TreeViewChildrenViewModel(TreeViewChildrenViewModel parent, string name)
         {
@@ -27,10 +28,23 @@ namespace Teammanager.Core
             set
             {
                 _Name = value;
+                IsEditing = false;
                 Notify("Name");
             }
         }
 
+        public bool IsEditing
+        {
+            get
+            {
+                return _renameCommand;
+            }
+            set
+            {
+                _renameCommand = value;
+                Notify("IsEditing");
+            }
+        }
 
         public ObservableCollection<TreeViewChildrenViewModel> Children
         {

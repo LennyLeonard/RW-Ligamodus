@@ -10,6 +10,8 @@ namespace Teammanager.Core
         private CommandHelper _menuBarHelper;
         private ItemSelectHelper _itemSelectHepler;
         private ObservableCollection<TreeViewChildrenViewModel> _tree;
+        private string _homeTeamName = string.Empty;
+        private string _visitorTeamName = string.Empty;
 
         public TeamManagerViewModel()
         {
@@ -140,10 +142,11 @@ namespace Teammanager.Core
         {
             get
             {
-                return string.Empty;
+                return _homeTeamName;
             }
             set
             {
+                _homeTeamName = value;
                 Notify("SelectedHomeTeam");
             }
         }
@@ -152,10 +155,11 @@ namespace Teammanager.Core
         {
             get
             {
-                return string.Empty;
+                return _visitorTeamName;
             }
             set
             {
+                _visitorTeamName = value;
                 Notify("SelectedVisitorTeam");
             }
         }
