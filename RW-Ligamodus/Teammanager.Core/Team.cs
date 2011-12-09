@@ -9,10 +9,13 @@ namespace Teammanager.Core
     {
         private string _emblemPath;
         private CommandHelper _commands;
+        private TeamManagerViewModel _vm;
 
-        public Team(TreeViewChildrenViewModel parent, string name) : base (parent, name)
+        public Team(TeamManagerViewModel vm, TreeViewChildrenViewModel parent, string name)
+            : base(parent, name)
         {
             _commands = new CommandHelper(commandsTeam);
+            _vm = vm;
         }
 
 
@@ -24,8 +27,10 @@ namespace Teammanager.Core
                     IsEditing = true;
                     break;
                 case "addTeamMember":
+                    Children.Add(new TeamMember(_vm, this, "New/Neu"));
                     break;
                 case "deleteItem":
+                    _vm.deleteItem(this);
                     break;
             }
         }

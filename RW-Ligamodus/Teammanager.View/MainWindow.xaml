@@ -5,7 +5,7 @@
         xmlns:core="clr-namespace:Teammanager.Core;assembly=Teammanager.Core"
         xmlns:local="clr-namespace:Teammanager.View"
         Title="Team Manager" MinHeight="450" MinWidth="650" Height="500" Width="650"
-        Background="#80A0AAFA"
+        Background="#50A0AAFA"
         Foreground="Black"
         FontSize="13">
     <Grid>
@@ -13,7 +13,7 @@
             <Menu DockPanel.Dock="Top" Height="auto" IsManipulationEnabled="True" BorderThickness="0" BorderBrush="Black">
                 <Menu.Background>
                     <LinearGradientBrush StartPoint="0.0,0.0" EndPoint="0.0,1.0">
-                        <GradientStop Color="#80A0AAFA" Offset="0.0"/>
+                        <GradientStop Color="#50A0AAFA" Offset="0.0"/>
                     </LinearGradientBrush>
                 </Menu.Background>
                 <MenuItem Header="{x:Static p:Resources.file}" Foreground="White">
@@ -91,7 +91,7 @@
             <Grid DockPanel.Dock="Top" Margin="0">
                 <Grid.Background>
                     <LinearGradientBrush>
-                        <GradientStop Color="#80A0AAFA" Offset="0.4"/>
+                        <GradientStop Color="#50A0AAFA" Offset="0.4"/>
                         <GradientStop Color="LightGray" Offset="1.0"/>
                     </LinearGradientBrush>
                 </Grid.Background>
@@ -102,9 +102,6 @@
                 <Border Margin="5,5,0,5" BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="0" Grid.ColumnSpan="1"/>
                 <Grid Grid.Column="0" Margin="5,5,0,5">
                 <TreeView Name="tree" BorderThickness="0" Background="#10A0AAFA" ItemsSource="{Binding Tree}">
-                    <TreeView.InputBindings>
-                        <KeyBinding Command="{Binding TreeViewCommands}" Key="del" CommandParameter="deleteItem"/>
-                    </TreeView.InputBindings>
                     <TreeView.ItemContainerStyle>
                         <Style TargetType="{x:Type TreeViewItem}">
                             <Setter Property="IsExpanded" Value="True" />
@@ -123,7 +120,11 @@
                                             </MenuItem>
                                             <MenuItem Header="{x:Static p:Resources.rename}" Command="{Binding TreeCommands}" CommandParameter="rename"/>
                                             <MenuItem Header="{x:Static p:Resources.addEmblem}" Command="{Binding TreeCommands}" CommandParameter="addEmblem"/>
-                                            <MenuItem Header="{x:Static p:Resources.remove_item}" Command="{Binding TreeCommands}" CommandParameter="delete"/>
+                                            <MenuItem Header="{x:Static p:Resources.remove_item}" Command="{Binding TreeCommands}" CommandParameter="deleteItem">
+                                                <MenuItem.InputBindings>
+                                                    <KeyBinding Command="{Binding TreeCommands}" Key="del" CommandParameter="deleteItem"/>
+                                                </MenuItem.InputBindings>
+                                            </MenuItem>
                                         </ContextMenu>
                                     </DockPanel.ContextMenu>
                                     <Image Height="15" Source="resources/images/group.png"/>
@@ -146,23 +147,31 @@
                                     <DockPanel.ContextMenu>
                                         <ContextMenu>
                                             <MenuItem Header="{x:Static p:Resources.to_pos}">
-                                                <MenuItem Header="{x:Static p:Resources.pos1}" Command="{Binding TreeCommands}" CommandParameter="toPos1"/>
-                                                <MenuItem Header="{x:Static p:Resources.pos2}" Command="{Binding TreeCommands}" CommandParameter="toPos2"/>
-                                                <MenuItem Header="{x:Static p:Resources.pos3}" Command="{Binding TreeCommands}" CommandParameter="toPos3"/>
-                                                <MenuItem Header="{x:Static p:Resources.pos4}" Command="{Binding TreeCommands}" CommandParameter="toPos4"/>
-                                                <MenuItem Header="{x:Static p:Resources.pos5}" Command="{Binding TreeCommands}" CommandParameter="toPos5"/>
-                                                <MenuItem Header="{x:Static p:Resources.pos6}" Command="{Binding TreeCommands}" CommandParameter="toPos6"/>
-                                                <MenuItem Header="{x:Static p:Resources.pos7}" Command="{Binding TreeCommands}" CommandParameter="toPos7"/>
-                                                <MenuItem Header="{x:Static p:Resources.pos8}" Command="{Binding TreeCommands}" CommandParameter="toPos8"/>
-                                                <MenuItem Header="{x:Static p:Resources.pos9}" Command="{Binding TreeCommands}" CommandParameter="toPos9"/>
-                                                <MenuItem Header="{x:Static p:Resources.pos10}" Command="{Binding TreeCommands}" CommandParameter="toPos10"/>
+                                                <MenuItem Header="{x:Static p:Resources.homeTeam}">
+                                                    <MenuItem Header="{x:Static p:Resources.pos1}" Command="{Binding TreeCommands}" CommandParameter="toPos1"/>
+                                                    <MenuItem Header="{x:Static p:Resources.pos3}" Command="{Binding TreeCommands}" CommandParameter="toPos3"/>
+                                                    <MenuItem Header="{x:Static p:Resources.pos5}" Command="{Binding TreeCommands}" CommandParameter="toPos5"/>
+                                                    <MenuItem Header="{x:Static p:Resources.pos7}" Command="{Binding TreeCommands}" CommandParameter="toPos7"/>
+                                                    <MenuItem Header="{x:Static p:Resources.pos9}" Command="{Binding TreeCommands}" CommandParameter="toPos9"/>
+                                                </MenuItem>
+                                                <MenuItem Header="{x:Static p:Resources.visitorTeam}">
+                                                    <MenuItem Header="{x:Static p:Resources.pos2}" Command="{Binding TreeCommands}" CommandParameter="toPos2"/>
+                                                    <MenuItem Header="{x:Static p:Resources.pos4}" Command="{Binding TreeCommands}" CommandParameter="toPos4"/>
+                                                    <MenuItem Header="{x:Static p:Resources.pos6}" Command="{Binding TreeCommands}" CommandParameter="toPos6"/>
+                                                    <MenuItem Header="{x:Static p:Resources.pos8}" Command="{Binding TreeCommands}" CommandParameter="toPos8"/>
+                                                    <MenuItem Header="{x:Static p:Resources.pos10}" Command="{Binding TreeCommands}" CommandParameter="toPos10"/>
+                                                </MenuItem>  
                                             </MenuItem>
                                             <MenuItem Header="{x:Static p:Resources.rename}" Command="{Binding TreeCommands}" CommandParameter="rename"/>
                                             <MenuItem Header="{x:Static p:Resources.move}">
                                                 <MenuItem Header="{x:Static p:Resources.up}" Command="{Binding TreeCommands}" CommandParameter="up"/>
                                                 <MenuItem Header="{x:Static p:Resources.down}" Command="{Binding TreeCommands}" CommandParameter="down"/>
                                             </MenuItem>
-                                            <MenuItem Header="{x:Static p:Resources.remove_item}" Command="{Binding TreeCommands}" CommandParameter="delete"/>
+                                            <MenuItem Header="{x:Static p:Resources.remove_item}" Command="{Binding TreeCommands}" CommandParameter="deleteItem">
+                                                <MenuItem.InputBindings>
+                                                    <KeyBinding Command="{Binding TreeCommands}" Key="del" CommandParameter="deleteItem"/>
+                                                </MenuItem.InputBindings>
+                                            </MenuItem>
                                         </ContextMenu>
                                     </DockPanel.ContextMenu>
                                     <Image Height="15" Source="resources/images/user.png"/>
@@ -219,7 +228,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_1}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos1}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -227,7 +236,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_2}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos2}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -235,7 +244,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_3}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos3}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -243,7 +252,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_4}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos4}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="3">
                         <Grid.RowDefinitions>
@@ -251,7 +260,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_5}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos5}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="3">
                         <Grid.RowDefinitions>
@@ -259,7 +268,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_6}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos6}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="4">
                         <Grid.RowDefinitions>
@@ -267,7 +276,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_7}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos7}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="4">
                         <Grid.RowDefinitions>
@@ -275,7 +284,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_8}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos8}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="5">
                         <Grid.RowDefinitions>
@@ -283,7 +292,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_9}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos9}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="5">
                         <Grid.RowDefinitions>
@@ -291,7 +300,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_10}"/>
-                        <TextBox Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos10}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                 </Grid>
             </Grid>
