@@ -23,6 +23,12 @@ namespace Teammanager.Core
         {
             switch (parameter as string)
             {
+                case "setAsHome":
+                    _vm.setAsHomeTeam(this);
+                    break;
+                case "setAsVisitor":
+                    _vm.setAsVisitorTeam(this);
+                    break;
                 case "rename":
                     IsEditing = true;
                     break;

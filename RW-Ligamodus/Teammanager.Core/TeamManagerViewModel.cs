@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System;
 
 namespace Teammanager.Core
 {
@@ -21,16 +22,16 @@ namespace Teammanager.Core
             _itemSelectHepler = new ItemSelectHelper();
             _tree = new ObservableCollection<TreeViewChildrenViewModel>();
             _allPositions = new ObservableCollection<Position>();
-            _allPositions.Add(new Position(1));
-            _allPositions.Add(new Position(2));
-            _allPositions.Add(new Position(3));
-            _allPositions.Add(new Position(4));
-            _allPositions.Add(new Position(5));
-            _allPositions.Add(new Position(6));
-            _allPositions.Add(new Position(7));
-            _allPositions.Add(new Position(8));
-            _allPositions.Add(new Position(9));
-            _allPositions.Add(new Position(10));
+            AllPositions.Add(new Position(1));
+            AllPositions.Add(new Position(2));
+            AllPositions.Add(new Position(3));
+            AllPositions.Add(new Position(4));
+            AllPositions.Add(new Position(5));
+            AllPositions.Add(new Position(6));
+            AllPositions.Add(new Position(7));
+            AllPositions.Add(new Position(8));
+            AllPositions.Add(new Position(9));
+            AllPositions.Add(new Position(10));
         }
 
 
@@ -129,6 +130,41 @@ namespace Teammanager.Core
             }
         }
 
+        public void setAsHomeTeam(Team hometeam)
+        {
+            SelectedHomeTeam = hometeam.Name;
+
+            int j = 0;
+            //set the first five to positions
+            try
+            {
+                for (int i = 0; i < 10; i += 2)
+                {
+                    AllPositions[i].Member = (hometeam.Children[j] as TeamMember);
+                    Notify("Pos" + AllPositions[i].PositionNumber);
+                    j++;
+                }
+            }
+            catch (Exception){ }
+        }
+
+        public void setAsVisitorTeam(Team visitorteam)
+        {
+            SelectedVisitorTeam = visitorteam.Name;
+
+            int j = 0;
+            //set the first five to positions
+            try
+            {
+                for (int i = 1; i < 10; i += 2)
+                {
+                    AllPositions[i].Member = (visitorteam.Children[j] as TeamMember);
+                    Notify("Pos" + AllPositions[i].PositionNumber);
+                    j++;
+                }
+            }
+            catch (Exception) { }
+        }
 
         #region properties
 
@@ -181,6 +217,19 @@ namespace Teammanager.Core
             {
                 _itemSelectHepler.CurrentObject = value;
                 Notify("SelectedTreeObject");
+            }
+        }
+
+        public ObservableCollection<Position> AllPositions
+        {
+            get
+            {
+                return _allPositions;
+            }
+            set
+            {
+                _allPositions = value;
+                Notify("AllPositions");
             }
         }
 
