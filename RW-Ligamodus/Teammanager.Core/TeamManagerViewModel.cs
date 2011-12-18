@@ -14,6 +14,7 @@ namespace Teammanager.Core
         private string _homeTeamName = string.Empty;
         private string _visitorTeamName = string.Empty;
         private ObservableCollection<Position> _allPositions;
+        private PersistanceControl pc;
 
         public TeamManagerViewModel()
         {
@@ -21,6 +22,7 @@ namespace Teammanager.Core
             _menuBarHelper = new CommandHelper(commandMenuBar);
             _itemSelectHepler = new ItemSelectHelper();
             _tree = new ObservableCollection<TreeViewChildrenViewModel>();
+            pc = new PersistanceControl();
             _allPositions = new ObservableCollection<Position>();
             AllPositions.Add(new Position(1));
             AllPositions.Add(new Position(2));
@@ -32,6 +34,9 @@ namespace Teammanager.Core
             AllPositions.Add(new Position(8));
             AllPositions.Add(new Position(9));
             AllPositions.Add(new Position(10));
+
+            //try to load tree objects
+            Tree = pc.deserializeTreeObjects();
         }
 
 
@@ -39,6 +44,14 @@ namespace Teammanager.Core
         {
             switch (parameter as string)
             {
+                case "commit":
+                    if (pc.serializeMatch(this.createMatch(AllPositions)) != true)
+                    {
+                        System.Console.WriteLine("Error creating match-file");
+                    }
+                    break;
+                case "save":
+                    break;
                 case "addTeam":
                     Tree.Add(new Team(this, null, "The A Team"));
                     break;
@@ -60,6 +73,15 @@ namespace Teammanager.Core
         {
             switch (parameter as string)
             {
+                case "commit":
+                    if (pc.serializeMatch(this.createMatch(AllPositions)) != true)
+                    {
+                        System.Console.WriteLine("Error creating match-file");
+                    }
+                    break;
+                case "save":
+                    pc.serializeTreeObjects(Tree);
+                    break;
                 case "addTeam":
                     Tree.Add(new Team(this, null, "New/Neu"));
                     break;
@@ -128,6 +150,40 @@ namespace Teammanager.Core
                     t.Children.Remove(member);
                 }
             }
+        }
+
+        private Match createMatch(ObservableCollection<Position> positions)
+        {
+            Match match = new Match();
+            match.HomeTeamName = SelectedHomeTeam;
+            match.VisitorTeamName = SelectedVisitorTeam;
+            foreach (Position p in positions)
+            {
+                if ((p.PositionNumber % 2) != 0)
+                {
+                    if(p.Member == null)
+                    {
+                        match.HomeTeamMembers.Add(new TeamMember(this, null, "---"));
+                    }
+                    else
+                    {
+                        match.HomeTeamMembers.Add(p.Member);
+                    }
+                }
+                else
+                {
+                    if (p.Member == null)
+                    {
+                        match.VisitorTeamMembers.Add(new TeamMember(this, null, "---"));
+                    }
+                    else
+                    {
+                        match.VisitorTeamMembers.Add(p.Member);
+                    }
+                }
+            }
+
+            return match;
         }
 
         public void setAsHomeTeam(Team hometeam)

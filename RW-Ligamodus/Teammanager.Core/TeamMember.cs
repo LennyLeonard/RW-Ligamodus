@@ -2,18 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Teammanager.Core
 {
-    public class TeamMember : TreeViewChildrenViewModel
+    [Serializable]
+    public class TeamMember : BaseViewModel
     {
         private CommandHelper _commands;
         private TeamManagerViewModel _vm;
+        private TreeViewChildrenViewModel _parent;
+        private string _name;
+        private bool _renameCommand;
+        private bool _isSelected;
 
-        public TeamMember(TeamManagerViewModel vm, TreeViewChildrenViewModel parent, string name) : base (parent, name)
+        public TeamMember(TeamManagerViewModel vm, TreeViewChildrenViewModel parent, string name)
         {
             _commands = new CommandHelper(commandsTeamMember);
+            _parent = parent;
+            _name = name;
             _vm = vm;
+        }
+
+        public TeamMember()
+        {
+            _commands = new CommandHelper(commandsTeamMember);
         }
 
         public void commandsTeamMember(object parameter)
@@ -61,6 +74,7 @@ namespace Teammanager.Core
 
         #region properties
 
+        [XmlIgnore]
         public CommandHelper TreeCommands
         {
             get
@@ -71,6 +85,52 @@ namespace Teammanager.Core
             {
                 _commands = value;
                 Notify("TreeCommands");
+            }
+        }
+
+        [XmlElement("Name")]
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                IsEditing = false;
+                Notify("Name");
+            }
+        }
+
+        [XmlIgnore]
+        public TreeViewChildrenViewModel Parent { get; set; }
+
+        [XmlIgnore]
+        public bool IsEditing
+        {
+            get
+            {
+                return _renameCommand;
+            }
+            set
+            {
+                _renameCommand = value;
+                Notify("IsEditing");
+            }
+        }
+
+        [XmlIgnore]
+        public bool IsSelected
+        {
+            get
+            {
+                return _isSelected;
+            }
+            set
+            {
+                _isSelected = value;
+                Notify("IsSelected");
             }
         }
 

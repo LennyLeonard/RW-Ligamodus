@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.Xml.Serialization;
 
 namespace Teammanager.Core
 {
+    [XmlRoot("Match")]
     public class Match : BaseViewModel
     {
         private ObservableCollection<TeamMember> _homeMembers;
@@ -18,6 +20,7 @@ namespace Teammanager.Core
 
         #region properties
 
+        [XmlAttribute("Home", DataType = "string")]
         public string HomeTeamName
         {
             get
@@ -31,6 +34,7 @@ namespace Teammanager.Core
             }
         }
 
+        [XmlAttribute("Visitor", DataType = "string")]
         public string VisitorTeamName
         {
             get
@@ -44,27 +48,33 @@ namespace Teammanager.Core
             }
         }
 
+        [XmlArray("HomeMatchMembers")]
+        [XmlArrayItem("Member")]
         public ObservableCollection<TeamMember> HomeTeamMembers
         {
             get
             {
                 return _homeMembers;
             }
+            set
+            {
+                _homeMembers = value;
+                Notify("HomeTeamMembers");
+            }
         }
 
+        [XmlArray("VisitorMatchMembers")]
+        [XmlArrayItem("Member")]
         public ObservableCollection<TeamMember> VisitorTeamMembers
         {
             get
             {
                 return _visitorMembers;
             }
-        }
-
-        public ObservableCollection<Position> Positions
-        {
-            get
+            set
             {
-                return null;
+                _visitorMembers = value;
+                Notify("VisitorTeamMembers");
             }
         }
 

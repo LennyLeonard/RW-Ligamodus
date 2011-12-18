@@ -17,12 +17,12 @@
                     </LinearGradientBrush>
                 </Menu.Background>
                 <MenuItem Header="{x:Static p:Resources.file}" Foreground="White">
-                    <MenuItem Header="{x:Static p:Resources.save}" Foreground="Black">
+                    <MenuItem Header="{x:Static p:Resources.save}" Command="{Binding MenuCommands}" CommandParameter="save" Foreground="Black">
                         <MenuItem.Icon>
                             <Image Height="18" Source="resources/images/save.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{x:Static p:Resources.commit}" Foreground="Black">
+                    <MenuItem Header="{x:Static p:Resources.commit}" Command="{Binding MenuCommands}" CommandParameter="commit" Foreground="Black">
                         <MenuItem.Icon>
                             <Image Height="18" Source="resources/images/commit.png"/>
                         </MenuItem.Icon>
@@ -71,10 +71,10 @@
                         <GradientStop Color="#F0A0AAFA" Offset="0.7"/>
                     </LinearGradientBrush>
                 </ToolBar.Background>
-                <Button ToolTip="{x:Static p:Resources.save}" Command="{Binding MenuBarCommands}">
+                <Button ToolTip="{x:Static p:Resources.save}" Command="{Binding MenuBarCommands}" CommandParameter="save">
                     <Image Height="24" Source="resources/images/save.png"/>
                 </Button>
-                <Button ToolTip="{x:Static p:Resources.commit}" Command="{Binding MenuBarCommands}">
+                <Button ToolTip="{x:Static p:Resources.commit}" Command="{Binding MenuBarCommands}" CommandParameter="commit">
                     <Image Height="24" Source="resources/images/commit.png"/>
                 </Button>
                 <Separator/>

@@ -1,11 +1,15 @@
 ﻿using System.Collections.ObjectModel;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Teammanager.Core
 {
+    [XmlInclude(typeof(Team))]
+    [XmlRoot("TreeElement")]
     public class TreeViewChildrenViewModel : BaseViewModel
     {
         private string _Name;
-        private ObservableCollection<TreeViewChildrenViewModel> _Children;
+        private ObservableCollection<TeamMember> _Children;
         private bool _isSelected;
         private bool _renameCommand;
 
@@ -16,9 +20,13 @@ namespace Teammanager.Core
 
         }
 
-        public TreeViewChildrenViewModel Parent { get; private set; }
-        
+        public TreeViewChildrenViewModel()
+        {
+        }
 
+        public TreeViewChildrenViewModel Parent { get; set; }
+        
+        [XmlElement("Name")]
         public string Name
         {
             get
@@ -33,6 +41,7 @@ namespace Teammanager.Core
             }
         }
 
+        [XmlIgnore]
         public bool IsEditing
         {
             get
@@ -46,14 +55,16 @@ namespace Teammanager.Core
             }
         }
 
-        public ObservableCollection<TreeViewChildrenViewModel> Children
+        [XmlArray("Children")]
+        public ObservableCollection<TeamMember> Children
         {
             get
             {
-                return _Children ?? (_Children = new ObservableCollection<TreeViewChildrenViewModel>());
+                return _Children ?? (_Children = new ObservableCollection<TeamMember>());
             }
         }
 
+        [XmlIgnore]
         public bool IsSelected
         {
             get
@@ -66,15 +77,5 @@ namespace Teammanager.Core
                 Notify("IsSelected");
             }
         }
-
-        protected void CheckIfEmpty()
-        {
-            if (Children.Count == 0)
-            {
-                Children.Add(new TreeViewChildrenViewModel(this, "(Keine Ergebnisse)"));
-            }
-        }
-
-
     }
 }

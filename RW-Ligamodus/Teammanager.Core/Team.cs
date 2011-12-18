@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
+using System.Xml.Serialization;
 
 namespace Teammanager.Core
 {
+    [Serializable]
     public class Team : TreeViewChildrenViewModel
     {
         private string _emblemPath;
@@ -16,6 +18,11 @@ namespace Teammanager.Core
         {
             _commands = new CommandHelper(commandsTeam);
             _vm = vm;
+        }
+
+        public Team()
+        {
+            _commands = new CommandHelper(commandsTeam);
         }
 
 
@@ -44,6 +51,7 @@ namespace Teammanager.Core
 
         #region properties
 
+        [XmlElement("Emblem")]
         public string EmblemPath
         {
             get
@@ -57,6 +65,7 @@ namespace Teammanager.Core
             }
         }
 
+        [XmlIgnore]
         public CommandHelper TreeCommands
         {
             get
