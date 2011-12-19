@@ -22,6 +22,7 @@ namespace Teammanager.Core
 
         public TreeViewChildrenViewModel()
         {
+            Notify("Name");
         }
 
         public TreeViewChildrenViewModel Parent { get; set; }

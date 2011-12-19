@@ -37,6 +37,18 @@ namespace Teammanager.Core
 
             //try to load tree objects
             Tree = pc.deserializeTreeObjects();
+            if (Tree != null)
+            {
+                foreach (TreeViewChildrenViewModel tvm in Tree)
+                {
+                    Team t = tvm as Team;
+                    t.setMainViewModelContext(this);
+                }
+            }
+            else
+            {
+                Tree = new ObservableCollection<TreeViewChildrenViewModel>();
+            }
         }
 
 
