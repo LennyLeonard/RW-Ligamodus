@@ -27,7 +27,7 @@
                             <Image Height="18" Source="resources/images/commit.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{x:Static p:Resources.exit}" Foreground="Black">
+                    <MenuItem Header="{x:Static p:Resources.exit}" Command="{Binding MenuCommands}" CommandParameter="close"  Foreground="Black">
                         <MenuItem.Icon>
                             <Image Height="18" Source="resources/images/exit.png"/>
                         </MenuItem.Icon>

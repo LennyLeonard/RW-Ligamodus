@@ -78,6 +78,13 @@ namespace Teammanager.Core
             }
         }
 
+        public void setMainViewModelContext(TeamManagerViewModel viewModel)
+        {
+            _vm = viewModel;
+        }
+
+
+
         #region properties
 
         [XmlIgnore]

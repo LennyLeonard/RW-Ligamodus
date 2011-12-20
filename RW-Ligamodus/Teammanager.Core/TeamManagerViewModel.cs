@@ -48,6 +48,7 @@ namespace Teammanager.Core
                         foreach (TeamMember tm in t.Children)
                         {
                             tm.Parent = t;
+                            tm.setMainViewModelContext(this);
                         }
                     }
                 }
@@ -72,13 +73,13 @@ namespace Teammanager.Core
                 case "save":
                     break;
                 case "addTeam":
-                    Tree.Add(new Team(this, null, "The A Team"));
+                    Tree.Add(new Team(this, null, "New/Neu"));
                     break;
                 case "addTeamMember":
                     Team t = SelectedTreeObject as Team;
                     if (t != null)
                     {
-                        t.Children.Add(new TeamMember(this, t, "B.A. Barakuda"));
+                        t.Children.Add(new TeamMember(this, t, "New/Neu"));
                     }
                     break;
                 case "deleteItem":
