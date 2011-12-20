@@ -43,6 +43,13 @@ namespace Teammanager.Core
                 {
                     Team t = tvm as Team;
                     t.setMainViewModelContext(this);
+                    if (t.Children != null)
+                    {
+                        foreach (TeamMember tm in t.Children)
+                        {
+                            tm.Parent = t;
+                        }
+                    }
                 }
             }
             else

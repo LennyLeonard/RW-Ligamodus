@@ -63,6 +63,12 @@ namespace Teammanager.Core
                 case "toPos10":
                     _vm.addToPosition(10, this);
                     break;
+                case "up":
+                    (Parent as Team).moveTeamMemberOneUpInTree(this);
+                    break;
+                case "down":
+                    (Parent as Team).moveTeamMemberOneDownInTree(this);
+                    break;
                 case "rename":
                     IsEditing = true;
                     break;

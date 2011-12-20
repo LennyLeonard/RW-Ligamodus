@@ -53,6 +53,35 @@ namespace Teammanager.Core
             _vm = viewModel;
         }
 
+        public void moveTeamMemberOneUpInTree(TeamMember member)
+        {
+            int index = 0;
+            index = this.Children.IndexOf(member);
+            if (index > 0)
+            {
+                this.Children.Move(index, index - 1);
+            }
+        }
+
+        public void moveTeamMemberOneDownInTree(TeamMember member)
+        {
+            int index = 0;
+            int last = 0;
+            Team team = member.Parent as Team;
+            index = this.Children.IndexOf(member);
+            last = this.Children.Count - 1;
+            if (last > index)
+            {
+                this.Children.Move(index, index + 1);
+            }
+
+        }
+
+
+
+
+
+
         #region properties
 
         [XmlElement("Emblem")]
