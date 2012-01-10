@@ -160,7 +160,7 @@ namespace Teammanager.View.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Licence ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die License ähnelt.
         /// </summary>
         public static string licence {
             get {
