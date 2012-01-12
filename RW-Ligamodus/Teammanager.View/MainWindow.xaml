@@ -5,6 +5,7 @@
         xmlns:core="clr-namespace:Teammanager.Core;assembly=Teammanager.Core"
         xmlns:local="clr-namespace:Teammanager.View"
         Title="Team Manager" MinHeight="450" MinWidth="650" Height="500" Width="650"
+        WindowStartupLocation="CenterScreen"
         Background="#50A0AAFA"
         Foreground="Black"
         FontSize="13">
@@ -56,7 +57,7 @@
                             <Image Height="18" Source="resources/images/license.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="{x:Static p:Resources.version}" Foreground="Black">
+                    <MenuItem Header="{x:Static p:Resources.version}" Name="versionMenuItem" Foreground="Black">
                         <MenuItem.Icon>
                             <Image Height="18" Source="resources/images/info.png"/>
                         </MenuItem.Icon>
@@ -228,7 +229,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_1}"/>
-                        <TextBox Text="{Binding Pos1}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos1}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -236,7 +237,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_2}"/>
-                        <TextBox Text="{Binding Pos2}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos2}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -244,7 +245,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_3}"/>
-                        <TextBox Text="{Binding Pos3}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos3}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -252,7 +253,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_4}"/>
-                        <TextBox Text="{Binding Pos4}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos4}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="3">
                         <Grid.RowDefinitions>
@@ -260,7 +261,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_5}"/>
-                        <TextBox Text="{Binding Pos5}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos5}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="3">
                         <Grid.RowDefinitions>
@@ -268,7 +269,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_6}"/>
-                        <TextBox Text="{Binding Pos6}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos6}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="4">
                         <Grid.RowDefinitions>
@@ -276,7 +277,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_7}"/>
-                        <TextBox Text="{Binding Pos7}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos7}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="4">
                         <Grid.RowDefinitions>
@@ -284,7 +285,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_8}"/>
-                        <TextBox Text="{Binding Pos8}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos8}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="5">
                         <Grid.RowDefinitions>
@@ -292,7 +293,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_9}"/>
-                        <TextBox Text="{Binding Pos9}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos9}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="5">
                         <Grid.RowDefinitions>
@@ -300,7 +301,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="0" Text="{x:Static p:Resources.pos_10}"/>
-                        <TextBox Text="{Binding Pos10}" IsReadOnly="True" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
+                        <TextBox Text="{Binding Pos10}" IsReadOnly="True" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Grid.Row="1" FontStyle="Italic"/>
                     </Grid>
                 </Grid>
             </Grid>

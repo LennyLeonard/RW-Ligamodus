@@ -52,6 +52,7 @@
     <Compile Include="TeamManagerViewModel.cs" />
     <Compile Include="TeamMember.cs" />
     <Compile Include="TreeViewChildrenViewModel.cs" />
+    <Compile Include="VersionWindowViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

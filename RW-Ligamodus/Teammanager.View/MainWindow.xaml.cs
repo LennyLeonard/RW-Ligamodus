@@ -11,6 +11,7 @@ namespace Teammanager.View
     {
         private Teammanager.Core.TeamManagerViewModel teamManagerViewModel;
         private License license = null;
+        private VersionWindow versionWindow = null;
 
         public MainWindow()
         {
@@ -21,6 +22,8 @@ namespace Teammanager.View
             this.tree.SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(tree_SelectedItemChanged);
             this.closeMenuItem.Click += new RoutedEventHandler(closeMenuItem_Click);
             this.licenceMenuItem.Click += new RoutedEventHandler(licenceMenuItem_Click);
+            this.versionMenuItem.Click += new RoutedEventHandler(versionMenuItem_Click);
+            this.Closing +=new System.ComponentModel.CancelEventHandler(MainWindow_Closing);
             teamManagerViewModel = new Core.TeamManagerViewModel();
             this.DataContext = teamManagerViewModel;
             
@@ -35,6 +38,14 @@ namespace Teammanager.View
         void closeMenuItem_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (versionWindow != null)
+            {
+                versionWindow.Close();
+            }
             if (license != null)
             {
                 license.Close();
@@ -44,7 +55,15 @@ namespace Teammanager.View
         void licenceMenuItem_Click(object sender, RoutedEventArgs e)
         {
             license = new License();
+            license.Owner = this;
             license.Show();
+        }
+
+        void versionMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            versionWindow = new VersionWindow();
+            versionWindow.Owner = this;
+            versionWindow.Show();
         }
     }
 }

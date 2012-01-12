@@ -1,0 +1,18 @@
+﻿<Window x:Class="Teammanager.View.VersionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:core="clr-namespace:Teammanager.Core;assembly=Teammanager.Core"
+        Title="Team Manager Version"
+        Height="100" Width="300"
+        ResizeMode="NoResize"
+        Background="#50A0AAFA"
+        Topmost="True"
+        WindowStartupLocation="CenterOwner"
+        Icon="resources/images/info.png">
+    <Window.DataContext>
+        <core:VersionWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding VersionInfoText}" Foreground="White" FontSize="18"/>
+    </Grid>
+</Window>

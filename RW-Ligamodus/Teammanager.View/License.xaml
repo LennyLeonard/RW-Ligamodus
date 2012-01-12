@@ -4,10 +4,11 @@
         xmlns:p="clr-namespace:Teammanager.View.Properties"
         Title="{x:Static p:Resources.licence}"
         Height="350" Width="500"
-        MaxHeight="350" MaxWidth="500"
-        MinHeight="350" MinWidth="500"
+        ResizeMode="NoResize"
         Background="#50A0AAFA"
-        WindowStyle="ToolWindow"
+        Icon="resources/images/license.png"
+        Topmost="True"
+        WindowStartupLocation="CenterOwner"
         Foreground="White"
         >
     <Grid Margin="10">
