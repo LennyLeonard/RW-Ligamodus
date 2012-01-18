@@ -1,0 +1,22 @@
+﻿<Window x:Class="RWLigamodus.View.RWLigamodusWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RW-Ligamodus" Height="600" Width="800">
+    <Grid>
+        <DockPanel>
+            <ToolBar DockPanel.Dock="Top" Width="auto">
+                <ToolBar.Background>
+                    <LinearGradientBrush StartPoint="0.0,0.0" EndPoint="0.0,1.0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0.0"/>
+                        <GradientStop Color="#FFFFFFFF" Offset="0.2"/>
+                        <GradientStop Color="#FFF0F0F0" Offset="0.7"/>
+                    </LinearGradientBrush>
+                </ToolBar.Background>
+                <Button Content="DemoBtn"/>
+            </ToolBar>
+            <Grid DockPanel.Dock="Top" Margin="0">
+                
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
