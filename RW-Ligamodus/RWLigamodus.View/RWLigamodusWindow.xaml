@@ -1,9 +1,29 @@
 ﻿<Window x:Class="RWLigamodus.View.RWLigamodusWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:p="clr-namespace:RWLigamodus.View.Properties"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="RW-Ligamodus" Height="600" Width="800">
     <Grid>
         <DockPanel>
+            <Menu DockPanel.Dock="Top" Background="LightGray">
+                <MenuItem Header="{x:Static p:Resources.file}">
+                    <MenuItem Header="{x:Static p:Resources.newMatch}"/>
+                    <MenuItem Header="{x:Static p:Resources.export}"/>
+                    <MenuItem Header="{x:Static p:Resources.exit}"/>
+                </MenuItem>
+                <MenuItem Header="{x:Static p:Resources.view}">
+                    <MenuItem Header="{x:Static p:Resources.expertMode}" IsCheckable="True"/>
+                    <MenuItem Header="{x:Static p:Resources.extView}" IsCheckable="True"/>
+                </MenuItem>
+                <MenuItem Header="{x:Static p:Resources.settings}">
+                    <MenuItem Header="{x:Static p:Resources.exportformat}"/>
+                    <MenuItem Header="{x:Static p:Resources.trntsettings}"/>
+                </MenuItem>
+                <MenuItem Header="{x:Static p:Resources.about}">
+                    <MenuItem Header="{x:Static p:Resources.license}"/>
+                    <MenuItem Header="{x:Static p:Resources.version}"/>
+                </MenuItem>
+            </Menu>
             <ToolBar DockPanel.Dock="Top" Width="auto">
                 <ToolBar.Background>
                     <LinearGradientBrush StartPoint="0.0,0.0" EndPoint="0.0,1.0">
