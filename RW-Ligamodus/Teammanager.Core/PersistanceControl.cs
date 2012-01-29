@@ -82,7 +82,21 @@ namespace Teammanager.Core
 
         public Match deserializeMatch()
         {
-            return null;
+            XmlSerializer serializer = new XmlSerializer(typeof(Match));
+            Match _savedMatch = null;
+            FileStream file;
+
+            if(File.Exists(matchpath))
+            {
+                try
+                {
+                    file = new FileStream(matchpath, FileMode.Open);
+                    _savedMatch = (Match) serializer.Deserialize(file);
+                }
+                catch (Exception) { }
+            }
+
+            return _savedMatch;
         }
 
     }
