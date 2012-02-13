@@ -56,6 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="StdTournamentControl.xaml.cs">
+      <DependentUpon>StdTournamentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TournamentSettingsControl.xaml.cs">
+      <DependentUpon>TournamentSettingsControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="RWLigamodusWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +79,14 @@
       <DependentUpon>RWLigamodusWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StdTournamentControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TournamentSettingsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

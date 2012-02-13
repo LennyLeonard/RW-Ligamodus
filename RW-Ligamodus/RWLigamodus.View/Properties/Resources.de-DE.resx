@@ -144,11 +144,26 @@
   <data name="newMatch" xml:space="preserve">
     <value>Neuer Wettkampf</value>
   </data>
+  <data name="res" xml:space="preserve">
+    <value>Gesamt</value>
+  </data>
+  <data name="ser1" xml:space="preserve">
+    <value>1. Serie</value>
+  </data>
+  <data name="ser2" xml:space="preserve">
+    <value>2. Serie</value>
+  </data>
+  <data name="ser3" xml:space="preserve">
+    <value>3. Serie</value>
+  </data>
+  <data name="ser4" xml:space="preserve">
+    <value>4. Serie</value>
+  </data>
   <data name="settings" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
   <data name="trntsettings" xml:space="preserve">
-    <value>Wettkampfeinstellung</value>
+    <value>Wettkampfeinstellungen</value>
   </data>
   <data name="version" xml:space="preserve">
     <value>Version</value>

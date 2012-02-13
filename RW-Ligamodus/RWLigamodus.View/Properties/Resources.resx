@@ -144,6 +144,21 @@
   <data name="newMatch" xml:space="preserve">
     <value>New Match</value>
   </data>
+  <data name="res" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="ser1" xml:space="preserve">
+    <value>Series 1</value>
+  </data>
+  <data name="ser2" xml:space="preserve">
+    <value>Series 2</value>
+  </data>
+  <data name="ser3" xml:space="preserve">
+    <value>Series 3</value>
+  </data>
+  <data name="ser4" xml:space="preserve">
+    <value>Series 4</value>
+  </data>
   <data name="settings" xml:space="preserve">
     <value>Settings</value>
   </data>

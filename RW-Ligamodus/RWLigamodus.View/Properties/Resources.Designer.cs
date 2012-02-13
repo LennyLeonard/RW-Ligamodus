@@ -142,6 +142,51 @@ namespace RWLigamodus.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Sum ähnelt.
+        /// </summary>
+        public static string res {
+            get {
+                return ResourceManager.GetString("res", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Series 1 ähnelt.
+        /// </summary>
+        public static string ser1 {
+            get {
+                return ResourceManager.GetString("ser1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Series 2 ähnelt.
+        /// </summary>
+        public static string ser2 {
+            get {
+                return ResourceManager.GetString("ser2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Series 3 ähnelt.
+        /// </summary>
+        public static string ser3 {
+            get {
+                return ResourceManager.GetString("ser3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Series 4 ähnelt.
+        /// </summary>
+        public static string ser4 {
+            get {
+                return ResourceManager.GetString("ser4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Settings ähnelt.
         /// </summary>
         public static string settings {

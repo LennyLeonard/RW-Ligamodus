@@ -9,12 +9,15 @@ namespace RWLigamodus.ViewModel
     {
         private CommandHelper _menuCommands;
         private CommandHelper _toolbarCommands;
-
+        private PersistanceControl _persistance;
+        private Match _currentMatch;
 
         public RWLigamodusViewModel()
         {
             _menuCommands = new CommandHelper(commandHandler);
             _toolbarCommands = new CommandHelper(commandHandler);
+            _persistance = new PersistanceControl();
+            _currentMatch = _persistance.deserializeMatch();
         }
 
         private void commandHandler(object param)
