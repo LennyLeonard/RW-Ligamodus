@@ -12,70 +12,151 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition MinHeight="300" Height="auto"/>
-                </Grid.RowDefinitions>
-                <!--home-->
-                <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
-                    <!--<Image Source=""/>-->
-                    <TextBlock TextWrapping="Wrap" Text="Heimmannschaft" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </StackPanel>
-                <Grid Grid.Row="1">
-                    <Viewbox VerticalAlignment="Top">
-                        <DataGrid HorizontalContentAlignment="Stretch" FlowDirection="RightToLeft" ItemsSource="{Binding TeamListVisitors}">
+        <Viewbox VerticalAlignment="Top">
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <!--home-->
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+                        <!--<Image Source=""/>-->
+                        <TextBlock TextWrapping="Wrap" Text="Heimmannschaft" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <DataGrid HorizontalContentAlignment="Stretch" Block.TextAlignment="Right" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" FlowDirection="RightToLeft" Name="TeamListHome">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.res}"/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.ser4}"/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.ser3}"/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.ser2}"/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.ser1}"/>
-                                <DataGridTextColumn Header="Name"/>
-                                <DataGridTextColumn Header="Pos"/>
+                                <DataGridTextColumn Binding="{Binding Path=Point}" Header="" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.HeaderStyle>
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Path=Result}" Header="{x:Static p:Resources.res}" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.HeaderStyle>
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Path=Series4}" Header="{x:Static p:Resources.ser4}">
+                                    <DataGridTextColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.HeaderStyle>
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Path=Series3}" Header="{x:Static p:Resources.ser3}">
+                                    <DataGridTextColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.HeaderStyle>
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Path=Series2}" Header="{x:Static p:Resources.ser2}">
+                                    <DataGridTextColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.HeaderStyle>
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Path=Series1}" Header="{x:Static p:Resources.ser1}">
+                                    <DataGridTextColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.HeaderStyle>
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" IsReadOnly="True">
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Binding="{Binding Path=Position}" Header="Pos" IsReadOnly="True">
+                                    <DataGridTextColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.HeaderStyle>
+                                    <DataGridTextColumn.CellStyle>
+                                        <Style TargetType="DataGridCell">
+                                            <Setter Property="FlowDirection" Value="LeftToRight"/>
+                                        </Style>
+                                    </DataGridTextColumn.CellStyle>
+                                </DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Viewbox>
+                    </Grid>
                 </Grid>
-            </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition MinHeight="300" Height="auto"/>
-                </Grid.RowDefinitions>
-                <!--visitor-->
-                <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
-                    <!--<Image Source=""/>-->
-                    <TextBlock TextWrapping="Wrap" Text="Gastmannschaft" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </StackPanel>
-                <Grid Grid.Row="1">
-                    <Viewbox VerticalAlignment="Top">
-                        <DataGrid HorizontalContentAlignment="Stretch" FlowDirection="LeftToRight" ItemsSource="{Binding TeamListVisitors}">
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <!--visitor-->
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+                        <!--<Image Source=""/>-->
+                        <TextBlock TextWrapping="Wrap" Text="Gastmannschaft" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <DataGrid HorizontalContentAlignment="Stretch" Block.TextAlignment="Left" FlowDirection="LeftToRight" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" Name="TeamListVisitors">
                             <DataGrid.Columns><!--reverse Columns-->
-                                <DataGridTextColumn Header=""/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.res}"/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.ser4}"/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.ser3}"/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.ser2}"/>
-                                <DataGridTextColumn Header="{x:Static p:Resources.ser1}"/>
-                                <DataGridTextColumn Header="Name"/>
-                                <DataGridTextColumn Header="Pos"/>
+                                <DataGridTextColumn Binding="{Binding Path=Point}" Header="" IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=Result}" Header="{x:Static p:Resources.res}" IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=Series4}" Header="{x:Static p:Resources.ser4}"/>
+                                <DataGridTextColumn Binding="{Binding Path=Series3}" Header="{x:Static p:Resources.ser3}"/>
+                                <DataGridTextColumn Binding="{Binding Path=Series2}" Header="{x:Static p:Resources.ser2}"/>
+                                <DataGridTextColumn Binding="{Binding Path=Series1}" Header="{x:Static p:Resources.ser1}"/>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding Path=Position}" Header="Pos" IsReadOnly="True"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </Viewbox>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <!--timecontrol-->
                 </Grid>
             </Grid>
-            <Grid Grid.Column="2">
-                <!--timecontrol-->
-            </Grid>
-        </Grid>
+        </Viewbox>
         <Grid Grid.Row="1"><!--only for play-off-->
             
         </Grid>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Teammanager.Core;
+using System.Collections.ObjectModel;
 
 namespace RWLigamodus.ViewModel
 {
@@ -11,13 +12,35 @@ namespace RWLigamodus.ViewModel
         private CommandHelper _toolbarCommands;
         private PersistanceControl _persistance;
         private Match _currentMatch;
+        private ObservableCollection<ExtendedTeamMember> _homeTeam;
+        private ObservableCollection<ExtendedTeamMember> _visitorTeam;
 
         public RWLigamodusViewModel()
         {
+            _homeTeam = new ObservableCollection<ExtendedTeamMember>();
+            _visitorTeam = new ObservableCollection<ExtendedTeamMember>();
             _menuCommands = new CommandHelper(commandHandler);
             _toolbarCommands = new CommandHelper(commandHandler);
-            _persistance = new PersistanceControl();
-            _currentMatch = _persistance.deserializeMatch();
+            try
+            {
+                _persistance = new PersistanceControl();
+                _currentMatch = _persistance.deserializeMatch();
+                //add teams to properties
+                for (int i = 0; i < _currentMatch.HomeTeamMembers.Count; i++)
+                {
+                    ExtendedTeamMember extendedMember = new ExtendedTeamMember(_currentMatch.HomeTeamMembers[i], 2 * i + 1);
+                    _homeTeam.Add(extendedMember);
+                }
+                for (int i = 0; i < _currentMatch.VisitorTeamMembers.Count; i++)
+                {
+                    ExtendedTeamMember extendedMember = new ExtendedTeamMember(_currentMatch.VisitorTeamMembers[i], 2 * i + 2);
+                    _visitorTeam.Add(extendedMember);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
         }
 
         private void commandHandler(object param)
@@ -58,6 +81,23 @@ namespace RWLigamodus.ViewModel
                 Notify("ToolbarCommands");
             }
         }
+
+        public ObservableCollection<ExtendedTeamMember> HomeTeam
+        {
+            get
+            {
+                return _homeTeam;
+            }
+        }
+
+        public ObservableCollection<ExtendedTeamMember> VisitorTeam
+        {
+            get
+            {
+                return _visitorTeam;
+            }
+        }
+
 
         #endregion
     }
