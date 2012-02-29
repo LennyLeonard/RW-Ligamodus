@@ -21,21 +21,30 @@ namespace RWLigamodus.View
     /// </summary>
     public partial class StdTournamentControl : UserControl
     {
+
         public StdTournamentControl()
         {
             InitializeComponent();
         }
 
 
-        #region dependency properties
+        #region dependency properties 
 
-        public static readonly DependencyProperty HomeTeamTableProperty =
-            DependencyProperty.Register("HomeTable", typeof(ObservableCollection<ExtendedTeamMember>), typeof(StdTournamentControl),
-            new UIPropertyMetadata(new ObservableCollection<ExtendedTeamMember>(), new PropertyChangedCallback(HomeTeamTableChanged)));
+        public static readonly DependencyProperty ViewModelProperty =
+            DependencyProperty.Register("ViewModel", typeof(object), typeof(StdTournamentControl),
+            new UIPropertyMetadata(new object(), new PropertyChangedCallback(ViewModelChanged)));
 
-        public static readonly DependencyProperty VisitorTeamTableProperty =
-            DependencyProperty.Register("VisitorTable", typeof(ObservableCollection<ExtendedTeamMember>), typeof(StdTournamentControl),
-            new UIPropertyMetadata(new ObservableCollection<ExtendedTeamMember>(), new PropertyChangedCallback(VisitorTeamTableChanged)));
+        public object ViewModel
+        {
+            get
+            {
+                return (object)GetValue(ViewModelProperty);
+            }
+            set
+            {
+                SetValue(ViewModelProperty, value);
+            }
+        }
 
         #endregion
 
@@ -43,7 +52,8 @@ namespace RWLigamodus.View
 
         #region dependency property callbacks
 
-        private static void HomeTeamTableChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+
+        private static void ViewModelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var currentObject = (d as StdTournamentControl);
             if (currentObject == null)
@@ -51,56 +61,13 @@ namespace RWLigamodus.View
                 return;
             }
 
-            var newData = (e.NewValue as ObservableCollection<ExtendedTeamMember>);
+            var newData = e.NewValue;
             if (newData == null)
             {
                 return;
             }
             //connect newData to target
-            currentObject.TeamListHome.ItemsSource = newData;
-        }
-
-        private static void VisitorTeamTableChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var currentObject = (d as StdTournamentControl);
-            if (currentObject == null)
-            {
-                return;
-            }
-
-            var newData = (e.NewValue as ObservableCollection<ExtendedTeamMember>);
-            if (newData == null)
-            {
-                return;
-            }
-            //connect newData to target
-            currentObject.TeamListVisitors.ItemsSource = newData;
-        }
-
-        public ObservableCollection<ExtendedTeamMember> HomeTable
-        {
-            get
-            {
-                return (ObservableCollection<ExtendedTeamMember>)GetValue(HomeTeamTableProperty);
-            }
-            set
-            {
-                SetValue(HomeTeamTableProperty, value);
-                
-            }
-        }
-
-        public ObservableCollection<ExtendedTeamMember> VisitorTable
-        {
-            get
-            {
-                return (ObservableCollection<ExtendedTeamMember>)GetValue(VisitorTeamTableProperty);
-            }
-            set
-            {
-                SetValue(VisitorTeamTableProperty, value);
-
-            }
+            currentObject.DataContext = newData;
         }
 
         #endregion

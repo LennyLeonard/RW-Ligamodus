@@ -4,10 +4,11 @@
         xmlns:l="clr-namespace:RWLigamodus.View"
         xmlns:local="clr-namespace:RWLigamodus.ViewModel;assembly=RWLigamodus.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        DataContext="{DynamicResource vm}"
         Title="RW-Ligamodus" Height="600" Width="800" MinHeight="400" MinWidth="800">
-    <Window.DataContext>
-        <local:RWLigamodusViewModel/>
-    </Window.DataContext>
+    <Window.Resources>
+        <local:RWLigamodusViewModel x:Key="vm"/>
+    </Window.Resources>
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top" Background="LightGray">
@@ -40,7 +41,8 @@
                 <Button Content="DemoBtn"/>
             </ToolBar>
             <Grid DockPanel.Dock="Top" Margin="0">
-                <l:StdTournamentControl HomeTable="{Binding HomeTeam}" VisitorTable="{Binding VisitorTeam}"/> 
+                <!--<l:StdTournamentControl HomeTable="{Binding HomeTeam}" HomePlayOffTable="{Binding HomeTeamPlayOff}" PlayOffVisible="{Binding PlayOffNeeded}"  VisitorTable="{Binding VisitorTeam}" VisitorPlayOffTable="{Binding VisitorTeamPlayOff}"/>-->
+                <l:StdTournamentControl ViewModel="{DynamicResource vm}"/>
             </Grid>
         </DockPanel>
     </Grid>

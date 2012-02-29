@@ -97,6 +97,10 @@ namespace RWLigamodus.ViewModel
             set
             {
                 result = Series1 + Series2 + Series3 + Series4;
+                if (ResultChanged != null)
+                {
+                    ResultChanged(this, null);
+                }
                 Notify("Result");
             }
         }
@@ -124,6 +128,12 @@ namespace RWLigamodus.ViewModel
                 Notify("Position");
             }
         }
+
+        #endregion
+
+        #region events
+
+        public event EventHandler ResultChanged;
 
         #endregion
     }

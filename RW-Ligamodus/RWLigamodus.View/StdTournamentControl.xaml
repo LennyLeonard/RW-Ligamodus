@@ -7,20 +7,27 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800"
              FontSize="16">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Viewbox VerticalAlignment="Top">
-            <Grid Grid.Row="0">
+        <Grid Grid.Row="0"><!--timecontrol-->
+            <TextBlock HorizontalAlignment="Center" Text="Demo Time Control Area"/>
+        </Grid>
+        <Viewbox Grid.Row="1" VerticalAlignment="Top" Margin="5">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
@@ -30,7 +37,7 @@
                         <TextBlock TextWrapping="Wrap" Text="Heimmannschaft" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                     <Grid Grid.Row="1">
-                        <DataGrid HorizontalContentAlignment="Stretch" Block.TextAlignment="Right" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" FlowDirection="RightToLeft" Name="TeamListHome">
+                        <DataGrid ItemsSource="{Binding HomeTeam}" HorizontalContentAlignment="Stretch" Block.TextAlignment="Right" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" FlowDirection="RightToLeft" Name="TeamListHome">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Path=Point}" Header="" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderStyle>
@@ -126,9 +133,26 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
+                    <Grid Grid.Row="2" Margin="0,50,0,0" Visibility="{Binding PlayOffNeeded,Converter={StaticResource BoolToVis}}"><!--only for play-off-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="Home Playoff"/>
+                        <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding HomeTeamPlayOff}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Grid.Row="3" HorizontalAlignment="Right">
+                        <TextBlock Text="Final Result"/>
+                    </Grid>
                 </Grid>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
@@ -138,7 +162,7 @@
                         <TextBlock TextWrapping="Wrap" Text="Gastmannschaft" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                     <Grid Grid.Row="1">
-                        <DataGrid HorizontalContentAlignment="Stretch" Block.TextAlignment="Left" FlowDirection="LeftToRight" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" Name="TeamListVisitors">
+                        <DataGrid ItemsSource="{Binding VisitorTeam}" HorizontalContentAlignment="Stretch" Block.TextAlignment="Left" FlowDirection="LeftToRight" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" Name="TeamListVisitors">
                             <DataGrid.Columns><!--reverse Columns-->
                                 <DataGridTextColumn Binding="{Binding Path=Point}" Header="" IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding Path=Result}" Header="{x:Static p:Resources.res}" IsReadOnly="True"/>
@@ -151,14 +175,25 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <!--timecontrol-->
+                    <Grid Grid.Row="2" Margin="0,50,0,0" Visibility="{Binding PlayOffNeeded,Converter={StaticResource BoolToVis}}">
+                        <!--only for play-off-->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="Visitor Playoff"/>
+                        <DataGrid Grid.Row="1" AutoGenerateColumns="False" FlowDirection="RightToLeft" ItemsSource="{Binding VisitorTeamPlayOff}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding PlayOff1}" Header="Stechen 1"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <TextBlock Text="Final Result"/>
+                    </Grid>
                 </Grid>
             </Grid>
         </Viewbox>
-        <Grid Grid.Row="1"><!--only for play-off-->
-            
-        </Grid>
     </Grid>
 </UserControl>
