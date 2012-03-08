@@ -27,12 +27,12 @@ namespace RWLigamodus.View
             InitializeComponent();
         }
 
-
-        #region dependency properties 
+        
+        #region dependency properties
 
         public static readonly DependencyProperty ViewModelProperty =
             DependencyProperty.Register("ViewModel", typeof(object), typeof(StdTournamentControl),
-            new UIPropertyMetadata(new object(), new PropertyChangedCallback(ViewModelChanged)));
+            new UIPropertyMetadata(null, new PropertyChangedCallback(ViewModelChanged)));
 
         public object ViewModel
         {
@@ -47,7 +47,6 @@ namespace RWLigamodus.View
         }
 
         #endregion
-
 
 
         #region dependency property callbacks

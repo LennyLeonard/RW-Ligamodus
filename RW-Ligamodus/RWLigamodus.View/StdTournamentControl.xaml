@@ -138,18 +138,26 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="Home Playoff"/>
+                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="{x:Static p:Resources.playoffhome}"/>
                         <DataGrid Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding HomeTeamPlayOff}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot1}" Header="1"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot2}" Header="2"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot3}" Header="3"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot4}" Header="4"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot5}" Header="5"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    <Grid Grid.Row="3" HorizontalAlignment="Right">
-                        <TextBlock Text="Final Result"/>
+                    <Grid Grid.Row="3" Margin="0,50,0,0" HorizontalAlignment="Right">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,5,0" FontSize="20" Text="Ergebnis:"/>
+                            <TextBlock FontSize="20" Text="{Binding ResultHome}"/>
+                        </StackPanel>
                     </Grid>
                 </Grid>
-                <Grid Grid.Column="1">
+                <Grid Margin="5,0,0,0" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -181,16 +189,20 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="Visitor Playoff"/>
+                        <TextBlock Grid.Row="0" TextAlignment="Center" Text="{x:Static p:Resources.playoffvisitor}"/>
                         <DataGrid Grid.Row="1" AutoGenerateColumns="False" FlowDirection="RightToLeft" ItemsSource="{Binding VisitorTeamPlayOff}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" IsReadOnly="True"/>
-                                <DataGridTextColumn Binding="{Binding PlayOff1}" Header="Stechen 1"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot1}" Header="1"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot2}" Header="2"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot3}" Header="3"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot4}" Header="4"/>
+                                <DataGridTextColumn Binding="{Binding PlayOffShot5}" Header="5"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    <Grid Grid.Row="3">
-                        <TextBlock Text="Final Result"/>
+                    <Grid Margin="0,50,0,0" Grid.Row="3">
+                        <TextBlock FontSize="20" Text="{Binding ResultVisitor}"/>
                     </Grid>
                 </Grid>
             </Grid>

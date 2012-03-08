@@ -9,6 +9,7 @@ namespace RWLigamodus.ViewModel
     public class ExtendedTeamMember : TeamMember
     {
         private short[] series = new short[4];
+        private short[] playOffShot = new short[5];
         private int result;
         private int position;
 
@@ -83,7 +84,7 @@ namespace RWLigamodus.ViewModel
                 {
                     series[3] = value;
                 }
-                Result = 0;//update
+                Result = 0; //update value
                 Notify("Series4");
             }
         }
@@ -126,6 +127,86 @@ namespace RWLigamodus.ViewModel
             {
                 position = value;
                 Notify("Position");
+            }
+        }
+
+        public short PlayOffShot1
+        {
+            get
+            {
+                return playOffShot[0];
+            }
+            set
+            {
+                if ((value <= 10) && (value >= 0))
+                {
+                    playOffShot[0] = value;
+                }
+                Notify("PlayOffShot1");
+            }
+        }
+
+        public short PlayOffShot2
+        {
+            get
+            {
+                return playOffShot[1];
+            }
+            set
+            {
+                if ((value <= 10) && (value >= 0))
+                {
+                    playOffShot[1] = value;
+                }
+                Notify("PlayOffShot2");
+            }
+        }
+
+        public short PlayOffShot3
+        {
+            get
+            {
+                return playOffShot[2];
+            }
+            set
+            {
+                if ((value <= 10) && (value >= 0))
+                {
+                    playOffShot[2] = value;
+                }
+                Notify("PlayOffShot3");
+            }
+        }
+
+        public short PlayOffShot4
+        {
+            get
+            {
+                return playOffShot[3];
+            }
+            set
+            {
+                if ((value <= 10) && (value >= 0))
+                {
+                    playOffShot[3] = value;
+                }
+                Notify("PlayOffShot4");
+            }
+        }
+
+        public short PlayOffShot5
+        {
+            get
+            {
+                return playOffShot[4];
+            }
+            set
+            {
+                if ((value <= 10) && (value >= 0))
+                {
+                    playOffShot[4] = value;
+                }
+                Notify("PlayOffShot5");
             }
         }
 

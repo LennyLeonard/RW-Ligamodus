@@ -1,32 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Teammanager.Core;
 using System.Collections.ObjectModel;
 
 namespace RWLigamodus.ViewModel
 {
-    public class RWLigamodusViewModel : BaseViewModel
+    public class TournamentViewModel : BaseViewModel
     {
-        private CommandHelper _menuCommands;
-        private CommandHelper _toolbarCommands;
-        private PersistanceControl _persistance;
-        private Match _currentMatch;
-        private TournamentViewModel _tnmtViewModel;/*
+        private bool _playOffNeeded = false;
         private ObservableCollection<ExtendedTeamMember> _homeTeam;
-        private ObservableCollection<ExtendedTeamMember> _visitorTeam;*/
+        private ObservableCollection<ExtendedTeamMember> _visitorTeam;
+        private ObservableCollection<ExtendedTeamMember> _homeTeamPlayOffs;
+        private ObservableCollection<ExtendedTeamMember> _visitorTeamPlayOffs;
 
-
-        public RWLigamodusViewModel()
+        public TournamentViewModel(Match actualMatch)
         {
-            _menuCommands = new CommandHelper(commandHandler);
-            _toolbarCommands = new CommandHelper(commandHandler);
+            _homeTeam = new ObservableCollection<ExtendedTeamMember>();
+            _visitorTeam = new ObservableCollection<ExtendedTeamMember>();
+            _homeTeamPlayOffs = new ObservableCollection<ExtendedTeamMember>();
+            _visitorTeamPlayOffs = new ObservableCollection<ExtendedTeamMember>();
+            
             try
             {
-                _persistance = new PersistanceControl();
-                _currentMatch = _persistance.deserializeMatch();
-                //add teams to tournamentvm
-                _tnmtViewModel = new TournamentViewModel(_currentMatch);
+                if (actualMatch == null)
+                {
+                    return;
+                }
+
+                for (int i = 0; i < actualMatch.HomeTeamMembers.Count; i++)
+                {
+                    ExtendedTeamMember extendedMember = new ExtendedTeamMember(actualMatch.HomeTeamMembers[i], 2 * i + 1);
+                    extendedMember.ResultChanged += new EventHandler(extendedMemberHome_ResultChanged);
+                    _homeTeam.Add(extendedMember);
+                }
+                for (int i = 0; i < actualMatch.VisitorTeamMembers.Count; i++)
+                {
+                    ExtendedTeamMember extendedMember = new ExtendedTeamMember(actualMatch.VisitorTeamMembers[i], 2 * i + 2);
+                    extendedMember.ResultChanged += new EventHandler(extendedMemberVisitor_ResultChanged);
+                    _visitorTeam.Add(extendedMember);
+                }
             }
             catch (Exception ex)
             {
@@ -34,55 +48,8 @@ namespace RWLigamodus.ViewModel
             }
         }
 
-        private void commandHandler(object param)
-        {
-            switch (param as string)
-            {
-                case "newTnmt":
-                    break;
-                case "exportResult":
-                    break;
-            }
-        }
 
         #region properties
-
-        public CommandHelper MenuCommands
-        {
-            get
-            {
-                return _menuCommands;
-            }
-            set
-            {
-                _menuCommands = value;
-                Notify("MenuCommands");
-            }
-        }
-
-        public CommandHelper ToolbarCommands
-        {
-            get
-            {
-                return _toolbarCommands;
-            }
-            set
-            {
-                _toolbarCommands = value;
-                Notify("ToolbarCommands");
-            }
-        }
-
-        public TournamentViewModel TnmtViewModel
-        {
-            get
-            {
-                return _tnmtViewModel;
-            }
-        }
-
-        #endregion
-        /*
         public ObservableCollection<ExtendedTeamMember> HomeTeam
         {
             get
@@ -206,6 +173,7 @@ namespace RWLigamodus.ViewModel
                 }
             }
         }
-        #endregion*/
+        #endregion
+
     }
 }

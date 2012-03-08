@@ -142,6 +142,24 @@ namespace RWLigamodus.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Play-Off Home  ähnelt.
+        /// </summary>
+        public static string playoffhome {
+            get {
+                return ResourceManager.GetString("playoffhome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Play-Off Visitors ähnelt.
+        /// </summary>
+        public static string playoffvisitor {
+            get {
+                return ResourceManager.GetString("playoffvisitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sum ähnelt.
         /// </summary>
         public static string res {

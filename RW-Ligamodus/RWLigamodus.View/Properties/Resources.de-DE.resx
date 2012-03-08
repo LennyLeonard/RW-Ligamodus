@@ -144,6 +144,12 @@
   <data name="newMatch" xml:space="preserve">
     <value>Neuer Wettkampf</value>
   </data>
+  <data name="playoffhome" xml:space="preserve">
+    <value>Stechen Heimmannschaft</value>
+  </data>
+  <data name="playoffvisitor" xml:space="preserve">
+    <value>Stechen Gastmannschaft</value>
+  </data>
   <data name="res" xml:space="preserve">
     <value>Gesamt</value>
   </data>

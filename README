@@ -1,5 +1,7 @@
 The intention for the RW-Ligamodus project was to create a application that visualizes and manages results of a RW-tournament. The application shall help to manage a RW-tournament and the results of each teammember and visualize the current state of the tournament to the spectators.
 
+How to compile:
+To compile the applications, open ./RW-Liagmodus/RW-Liagmodus.sln with VS2010 and run the two WPF-Application projects.
 
 
 Copyright 2011 LennyLeonard
