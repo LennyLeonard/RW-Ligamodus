@@ -4,7 +4,7 @@
         xmlns:l="clr-namespace:RWLigamodus.View"
         xmlns:local="clr-namespace:RWLigamodus.ViewModel;assembly=RWLigamodus.ViewModel"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="RW-Ligamodus" Height="600" Width="800" MinHeight="400" MinWidth="800">
+        Title="RW-Ligamodus" Height="600" Width="800" MinHeight="600" MinWidth="800">
     <Window.DataContext>
         <local:RWLigamodusViewModel/>
     </Window.DataContext>
@@ -21,7 +21,6 @@
                     <MenuItem Header="{x:Static p:Resources.extView}" IsCheckable="True"/>
                 </MenuItem>
                 <MenuItem Header="{x:Static p:Resources.settings}">
-                    <MenuItem Header="{x:Static p:Resources.exportformat}"/>
                     <MenuItem Header="{x:Static p:Resources.trntsettings}"/>
                 </MenuItem>
                 <MenuItem Header="{x:Static p:Resources.about}">
@@ -41,6 +40,7 @@
             </ToolBar>
             <Grid DockPanel.Dock="Top" Margin="0">
                 <l:StdTournamentControl ViewModel="{Binding TnmtViewModel}"/>
+                <l:TournamentSettingsControl ViewModel="{Binding TnmtSettViewModel}" Visibility="Hidden"/>
             </Grid>
         </DockPanel>
     </Grid>

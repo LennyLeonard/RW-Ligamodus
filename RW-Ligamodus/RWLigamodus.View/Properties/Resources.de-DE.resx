@@ -130,13 +130,16 @@
     <value>Ergebnis exportieren</value>
   </data>
   <data name="exportformat" xml:space="preserve">
-    <value>Exporteinstellungen</value>
+    <value>Exportfunktion</value>
   </data>
   <data name="extView" xml:space="preserve">
     <value>Erweitertes Fenster</value>
   </data>
   <data name="file" xml:space="preserve">
     <value>Datei</value>
+  </data>
+  <data name="general" xml:space="preserve">
+    <value>Allgemein</value>
   </data>
   <data name="license" xml:space="preserve">
     <value>Lizenz</value>
@@ -167,6 +170,9 @@
   </data>
   <data name="settings" xml:space="preserve">
     <value>Einstellungen</value>
+  </data>
+  <data name="timemon" xml:space="preserve">
+    <value>Zeitüberwachung</value>
   </data>
   <data name="trntsettings" xml:space="preserve">
     <value>Wettkampfeinstellungen</value>

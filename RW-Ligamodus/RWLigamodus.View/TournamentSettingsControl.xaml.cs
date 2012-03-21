@@ -23,5 +23,49 @@ namespace RWLigamodus.View
         {
             InitializeComponent();
         }
+
+        #region dependency properties
+
+        public static readonly DependencyProperty ViewModelProperty =
+            DependencyProperty.Register("ViewModel", typeof(object), typeof(TournamentSettingsControl),
+            new UIPropertyMetadata(null, new PropertyChangedCallback(ViewModelChanged)));
+
+        public object ViewModel
+        {
+            get
+            {
+                return (object)GetValue(ViewModelProperty);
+            }
+            set
+            {
+                SetValue(ViewModelProperty, value);
+            }
+        }
+
+        #endregion
+
+
+        #region dependency property callbacks
+
+
+        private static void ViewModelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var currentObject = (d as TournamentSettingsControl);
+            if (currentObject == null)
+            {
+                return;
+            }
+
+            var newData = e.NewValue;
+            if (newData == null)
+            {
+                return;
+            }
+            //connect newData to target
+            currentObject.DataContext = newData;
+        }
+
+        #endregion
+
     }
 }

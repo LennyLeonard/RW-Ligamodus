@@ -9,6 +9,11 @@
              FontSize="16">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <LinearGradientBrush x:Key="YellowBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="White" Offset="0.1" />
+            <GradientStop Color="Yellow" Offset="0.318" />
+            <GradientStop Color="White" Offset="0.9" />
+        </LinearGradientBrush>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -34,10 +39,22 @@
                     <!--home-->
                     <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
                         <!--<Image Source=""/>-->
-                        <TextBlock TextWrapping="Wrap" Text="Heimmannschaft" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding HomeTeamName}" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                     <Grid Grid.Row="1">
-                        <DataGrid ItemsSource="{Binding HomeTeam}" HorizontalContentAlignment="Stretch" Block.TextAlignment="Right" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" FlowDirection="RightToLeft" Name="TeamListHome">
+                        <DataGrid ItemsSource="{Binding HomeTeam}" CanUserResizeColumns="False" HorizontalContentAlignment="Stretch" Block.TextAlignment="Right" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" FlowDirection="RightToLeft" Name="TeamListHome">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding MemberStatus}" Value="1">
+                                            <Setter Property="Background" Value="{StaticResource YellowBackgroundBrush}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding MemberStatus}" Value="0">
+                                            <Setter Property="Background" Value="White"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Path=Point}" Header="" IsReadOnly="True">
                                     <DataGridTextColumn.HeaderStyle>
@@ -167,10 +184,22 @@
                     <!--visitor-->
                     <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
                         <!--<Image Source=""/>-->
-                        <TextBlock TextWrapping="Wrap" Text="Gastmannschaft" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock TextWrapping="Wrap" Text="{Binding VisitorTeamName}" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                     <Grid Grid.Row="1">
                         <DataGrid ItemsSource="{Binding VisitorTeam}" HorizontalContentAlignment="Stretch" Block.TextAlignment="Left" FlowDirection="LeftToRight" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" Name="TeamListVisitors">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding MemberStatus}" Value="1">
+                                            <Setter Property="Background" Value="{StaticResource YellowBackgroundBrush}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding MemberStatus}" Value="0">
+                                            <Setter Property="Background" Value="White"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
                             <DataGrid.Columns><!--reverse Columns-->
                                 <DataGridTextColumn Binding="{Binding Path=Point}" Header="" IsReadOnly="True"/>
                                 <DataGridTextColumn Binding="{Binding Path=Result}" Header="{x:Static p:Resources.res}" IsReadOnly="True"/>

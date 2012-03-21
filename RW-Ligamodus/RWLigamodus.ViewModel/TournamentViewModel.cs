@@ -9,7 +9,12 @@ namespace RWLigamodus.ViewModel
 {
     public class TournamentViewModel : BaseViewModel
     {
+        private TournamentCompareHelper _helper;
         private bool _playOffNeeded = false;
+        private string _homeName;
+        private string _visitorName;
+        private int _resultHome = 0;
+        private int _resultVisitor = 0;
         private ObservableCollection<ExtendedTeamMember> _homeTeam;
         private ObservableCollection<ExtendedTeamMember> _visitorTeam;
         private ObservableCollection<ExtendedTeamMember> _homeTeamPlayOffs;
@@ -17,6 +22,7 @@ namespace RWLigamodus.ViewModel
 
         public TournamentViewModel(Match actualMatch)
         {
+            _helper = new TournamentCompareHelper();
             _homeTeam = new ObservableCollection<ExtendedTeamMember>();
             _visitorTeam = new ObservableCollection<ExtendedTeamMember>();
             _homeTeamPlayOffs = new ObservableCollection<ExtendedTeamMember>();
@@ -28,6 +34,9 @@ namespace RWLigamodus.ViewModel
                 {
                     return;
                 }
+
+                this.HomeTeamName = actualMatch.HomeTeamName;
+                this.VisitorTeamName = actualMatch.VisitorTeamName;
 
                 for (int i = 0; i < actualMatch.HomeTeamMembers.Count; i++)
                 {
@@ -50,6 +59,33 @@ namespace RWLigamodus.ViewModel
 
 
         #region properties
+
+        public string HomeTeamName
+        {
+            get
+            {
+                return _homeName;
+            }
+            set
+            {
+                _homeName = value;
+                Notify("HomeTeamName");
+            }
+        }
+
+        public string VisitorTeamName
+        {
+            get
+            {
+                return _visitorName;
+            }
+            set
+            {
+                _visitorName = value;
+                Notify("VisitorTeamName");
+            }
+        }
+
         public ObservableCollection<ExtendedTeamMember> HomeTeam
         {
             get
@@ -109,7 +145,12 @@ namespace RWLigamodus.ViewModel
         {
             get
             {
-                return 0;
+                return _resultHome;
+            }
+            set
+            {
+                _resultHome = value;
+                Notify("ResultHome");
             }
         }
 
@@ -117,7 +158,12 @@ namespace RWLigamodus.ViewModel
         {
             get
             {
-                return 0;
+                return _resultVisitor;
+            }
+            set
+            {
+                _resultVisitor = value;
+                Notify("ResultVisitor");
             }
         }
 
@@ -129,9 +175,10 @@ namespace RWLigamodus.ViewModel
         {
             ExtendedTeamMember etm = sender as ExtendedTeamMember;
             int index = VisitorTeam.IndexOf(etm);
+            this.PlayOffNeeded = _helper.compareAndSetResult(VisitorTeam[index], HomeTeam[index]);
+            _helper.compareAndSetStatus(VisitorTeam[index], HomeTeam[index]);
             if ((VisitorTeam[index].Result == HomeTeam[index].Result) && (!VisitorTeamPlayOff.Contains(etm)))
             {
-                this.PlayOffNeeded = true;
                 VisitorTeamPlayOff.Add(etm);
                 HomeTeamPlayOff.Add(HomeTeam[index]);
             }
@@ -153,10 +200,11 @@ namespace RWLigamodus.ViewModel
         {
             ExtendedTeamMember etm = sender as ExtendedTeamMember;
             int index = HomeTeam.IndexOf(etm);
+            this.PlayOffNeeded = _helper.compareAndSetResult(VisitorTeam[index], HomeTeam[index]);
+            _helper.compareAndSetStatus(VisitorTeam[index], HomeTeam[index]);
             //check if a playoff is needed
             if ((HomeTeam[index].Result == VisitorTeam[index].Result) && (!HomeTeamPlayOff.Contains(etm)))
             {
-                this.PlayOffNeeded = true;
                 HomeTeamPlayOff.Add(etm);
                 VisitorTeamPlayOff.Add(VisitorTeam[index]);
             }

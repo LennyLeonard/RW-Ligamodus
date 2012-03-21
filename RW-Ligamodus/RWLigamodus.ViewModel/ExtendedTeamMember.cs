@@ -10,7 +10,10 @@ namespace RWLigamodus.ViewModel
     {
         private short[] series = new short[4];
         private short[] playOffShot = new short[5];
-        private int result;
+        private bool[] seriesChanged = new bool[4];
+        private int result = 0;
+        private int status = -1;
+        private short point = 0;
         private int position;
 
         public ExtendedTeamMember(TeamMember member, int pos)
@@ -32,9 +35,23 @@ namespace RWLigamodus.ViewModel
                 if ((value >= 0) && (value <= 100))
                 {
                     series[0] = value;
+                    Series1Changed = true;
                 }
                 Result = 0;//update
                 Notify("Series1");
+            }
+        }
+
+        public bool Series1Changed
+        {
+            get
+            {
+                return seriesChanged[0];
+            }
+            set
+            {
+                seriesChanged[0] = value;
+                Notify("Series1Changed");
             }
         }
 
@@ -49,9 +66,23 @@ namespace RWLigamodus.ViewModel
                 if ((value >= 0) && (value <= 100))
                 {
                     series[1] = value;
+                    Series2Changed = true;
                 }
                 Result = 0;//update
                 Notify("Series2");
+            }
+        }
+
+        public bool Series2Changed
+        {
+            get
+            {
+                return seriesChanged[1];
+            }
+            set
+            {
+                seriesChanged[1] = value;
+                Notify("Series2Changed");
             }
         }
 
@@ -66,9 +97,23 @@ namespace RWLigamodus.ViewModel
                 if ((value >= 0) && (value <= 100))
                 {
                     series[2] = value;
+                    Series3Changed = true;
                 }
                 Result = 0;//update
                 Notify("Series3");
+            }
+        }
+
+        public bool Series3Changed
+        {
+            get
+            {
+                return seriesChanged[2];
+            }
+            set
+            {
+                seriesChanged[2] = value;
+                Notify("Series3Changed");
             }
         }
 
@@ -83,9 +128,23 @@ namespace RWLigamodus.ViewModel
                 if ((value >= 0) && (value <= 100))
                 {
                     series[3] = value;
+                    Series4Changed = true;
                 }
                 Result = 0; //update value
                 Notify("Series4");
+            }
+        }
+
+        public bool Series4Changed
+        {
+            get
+            {
+                return seriesChanged[3];
+            }
+            set
+            {
+                seriesChanged[3] = value;
+                Notify("Series4Changed");
             }
         }
 
@@ -106,14 +165,16 @@ namespace RWLigamodus.ViewModel
             }
         }
 
-        public int Point
+        public short Point
         {
             get
             {
-                return 0;
+                return point;
             }
             set
             {
+                point = value;
+                Notify("Point");
             }
         }
 
@@ -207,6 +268,25 @@ namespace RWLigamodus.ViewModel
                     playOffShot[4] = value;
                 }
                 Notify("PlayOffShot5");
+            }
+        }
+
+        /// <summary>
+        /// -1 = start status
+        ///  0 = not leading status
+        ///  1 = leading status
+        ///  2 = match win status
+        /// </summary>
+        public int MemberStatus
+        {
+            get
+            {
+                return status;
+            }
+            set
+            {
+                status = value;
+                Notify("MemberStatus");
             }
         }
 

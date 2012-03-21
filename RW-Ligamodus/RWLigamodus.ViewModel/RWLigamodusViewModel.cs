@@ -12,7 +12,9 @@ namespace RWLigamodus.ViewModel
         private CommandHelper _toolbarCommands;
         private PersistanceControl _persistance;
         private Match _currentMatch;
-        private TournamentViewModel _tnmtViewModel;/*
+        private TournamentViewModel _tnmtViewModel;
+        private TournamentSettingsViewModel _tnmtSettViewModel;
+        /*
         private ObservableCollection<ExtendedTeamMember> _homeTeam;
         private ObservableCollection<ExtendedTeamMember> _visitorTeam;*/
 
