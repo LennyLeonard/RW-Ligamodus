@@ -6,12 +6,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800"
-             FontSize="16">
+             FontSize="16" Background="Transparent">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         <LinearGradientBrush x:Key="YellowBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="White" Offset="0.1" />
-            <GradientStop Color="Yellow" Offset="0.318" />
+            <GradientStop Color="#AFFFFF00" Offset="0.318" />
+            <GradientStop Color="White" Offset="0.9" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="OrangeBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="White" Offset="0.1" />
+            <GradientStop Color="#FFFFAF00" Offset="0.318" />
             <GradientStop Color="White" Offset="0.9" />
         </LinearGradientBrush>
     </UserControl.Resources>
@@ -42,7 +47,7 @@
                         <TextBlock TextWrapping="Wrap" Text="{Binding HomeTeamName}" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                     <Grid Grid.Row="1">
-                        <DataGrid ItemsSource="{Binding HomeTeam}" CanUserResizeColumns="False" HorizontalContentAlignment="Stretch" Block.TextAlignment="Right" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" FlowDirection="RightToLeft" Name="TeamListHome">
+                        <DataGrid ItemsSource="{Binding HomeTeam}" SelectionUnit="FullRow" CanUserResizeColumns="False" HorizontalContentAlignment="Stretch" Block.TextAlignment="Right" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" FlowDirection="RightToLeft" Name="TeamListHome">
                             <DataGrid.RowStyle>
                                 <Style TargetType="DataGridRow">
                                     <Style.Triggers>
@@ -51,6 +56,9 @@
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding MemberStatus}" Value="0">
                                             <Setter Property="Background" Value="White"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding MemberStatus}" Value="2">
+                                            <Setter Property="Background" Value="{StaticResource OrangeBackgroundBrush}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -187,7 +195,7 @@
                         <TextBlock TextWrapping="Wrap" Text="{Binding VisitorTeamName}" Margin="10" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                     <Grid Grid.Row="1">
-                        <DataGrid ItemsSource="{Binding VisitorTeam}" HorizontalContentAlignment="Stretch" Block.TextAlignment="Left" FlowDirection="LeftToRight" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" Name="TeamListVisitors">
+                        <DataGrid ItemsSource="{Binding VisitorTeam}" SelectionUnit="FullRow" HorizontalContentAlignment="Stretch" Block.TextAlignment="Left" FlowDirection="LeftToRight" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" Name="TeamListVisitors">
                             <DataGrid.RowStyle>
                                 <Style TargetType="DataGridRow">
                                     <Style.Triggers>
@@ -196,6 +204,9 @@
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding MemberStatus}" Value="0">
                                             <Setter Property="Background" Value="White"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding MemberStatus}" Value="2">
+                                            <Setter Property="Background" Value="{StaticResource OrangeBackgroundBrush}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

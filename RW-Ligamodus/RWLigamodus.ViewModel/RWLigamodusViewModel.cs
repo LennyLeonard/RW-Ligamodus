@@ -14,9 +14,7 @@ namespace RWLigamodus.ViewModel
         private Match _currentMatch;
         private TournamentViewModel _tnmtViewModel;
         private TournamentSettingsViewModel _tnmtSettViewModel;
-        /*
-        private ObservableCollection<ExtendedTeamMember> _homeTeam;
-        private ObservableCollection<ExtendedTeamMember> _visitorTeam;*/
+        private bool _TournamentVisibility = true;
 
 
         public RWLigamodusViewModel()
@@ -29,6 +27,7 @@ namespace RWLigamodus.ViewModel
                 _currentMatch = _persistance.deserializeMatch();
                 //add teams to tournamentvm
                 _tnmtViewModel = new TournamentViewModel(_currentMatch);
+                _tnmtSettViewModel = new TournamentSettingsViewModel(this);
             }
             catch (Exception ex)
             {
@@ -43,6 +42,9 @@ namespace RWLigamodus.ViewModel
                 case "newTnmt":
                     break;
                 case "exportResult":
+                    break;
+                case "openSettings":
+                    this.TournamentVisibility = false;
                     break;
             }
         }
@@ -83,131 +85,41 @@ namespace RWLigamodus.ViewModel
             }
         }
 
-        #endregion
-        /*
-        public ObservableCollection<ExtendedTeamMember> HomeTeam
+        public TournamentSettingsViewModel TnmtSettingsViewModel
         {
             get
             {
-                return _homeTeam;
-            }
-        }
-
-        public ObservableCollection<ExtendedTeamMember> VisitorTeam
-        {
-            get
-            {
-                return _visitorTeam;
-            }
-        }
-
-        public ObservableCollection<ExtendedTeamMember> HomeTeamPlayOff
-        {
-            get
-            {
-                return _homeTeamPlayOffs;
+                return _tnmtSettViewModel;
             }
             set
             {
-                _homeTeamPlayOffs = value;
-                Notify("HomeTeamPlayOff");
+                _tnmtSettViewModel = value;
+                Notify("TnmtSettingsViewModel");
             }
         }
 
-        public ObservableCollection<ExtendedTeamMember> VisitorTeamPlayOff
+        public bool TournamentVisibility
         {
             get
             {
-                return _visitorTeamPlayOffs;
+                return _TournamentVisibility;
             }
             set
             {
-                _visitorTeamPlayOffs = value;
-                Notify("VisitorTeamPlayOff");
+                _TournamentVisibility = value;
+                Notify("TournamentVisibility");
+                Notify("SettingsVisibility");
             }
         }
 
-        public bool PlayOffNeeded
+        public bool SettingsVisibility
         {
             get
             {
-                return _playOffNeeded;
-            }
-            set
-            {
-                _playOffNeeded = value;
-                Notify("PlayOffNeeded");
-            }
-        }
-
-        public int ResultHome
-        {
-            get
-            {
-                return 0;
-            }
-        }
-
-        public int ResultVisitor
-        {
-            get
-            {
-                return 0;
+                return !this.TournamentVisibility;
             }
         }
 
         #endregion
-
-        #region eventhandlers
-
-        private void extendedMemberVisitor_ResultChanged(object sender, EventArgs e)
-        {
-            ExtendedTeamMember etm = sender as ExtendedTeamMember;
-            int index = VisitorTeam.IndexOf(etm);
-            if ((VisitorTeam[index].Result == HomeTeam[index].Result) && (!VisitorTeamPlayOff.Contains(etm)))
-            {
-                this.PlayOffNeeded = true;
-                VisitorTeamPlayOff.Add(etm);
-                HomeTeamPlayOff.Add(HomeTeam[index]);
-            }
-            else if (VisitorTeam[index].Result != HomeTeam[index].Result)
-            {
-                if (VisitorTeamPlayOff.Contains(etm))
-                {
-                    VisitorTeamPlayOff.Remove(etm);
-                    HomeTeamPlayOff.Remove(HomeTeam[index]);
-                    if (VisitorTeamPlayOff.Count == 0)
-                    {
-                        this.PlayOffNeeded = false;
-                    }
-                }
-            }
-        }
-
-        private void extendedMemberHome_ResultChanged(object sender, EventArgs e)
-        {
-            ExtendedTeamMember etm = sender as ExtendedTeamMember;
-            int index = HomeTeam.IndexOf(etm);
-            //check if a playoff is needed
-            if ((HomeTeam[index].Result == VisitorTeam[index].Result) && (!HomeTeamPlayOff.Contains(etm)))
-            {
-                this.PlayOffNeeded = true;
-                HomeTeamPlayOff.Add(etm);
-                VisitorTeamPlayOff.Add(VisitorTeam[index]);
-            }
-            else if (HomeTeam[index].Result != VisitorTeam[index].Result)
-            {
-                if (HomeTeamPlayOff.Contains(etm))
-                {
-                    HomeTeamPlayOff.Remove(etm);
-                    VisitorTeamPlayOff.Remove(VisitorTeam[index]);
-                    if (HomeTeam.Count == 0)
-                    {
-                        this.PlayOffNeeded = false;
-                    }
-                }
-            }
-        }
-        #endregion*/
     }
 }

@@ -45,6 +45,7 @@
     <Compile Include="RWLigamodusViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TournamentCompareHelper.cs" />
+    <Compile Include="TournamentSettings.cs" />
     <Compile Include="TournamentSettingsViewModel.cs" />
     <Compile Include="TournamentViewModel.cs" />
   </ItemGroup>

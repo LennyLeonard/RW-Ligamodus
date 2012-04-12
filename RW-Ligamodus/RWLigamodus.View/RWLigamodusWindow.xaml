@@ -8,6 +8,15 @@
     <Window.DataContext>
         <local:RWLigamodusViewModel/>
     </Window.DataContext>
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="White" Offset="0.5" />
+            <GradientStop Color="SteelBlue" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="bool2visConv"/>
+    </Window.Resources>
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top" Background="LightGray">
@@ -21,7 +30,7 @@
                     <MenuItem Header="{x:Static p:Resources.extView}" IsCheckable="True"/>
                 </MenuItem>
                 <MenuItem Header="{x:Static p:Resources.settings}">
-                    <MenuItem Header="{x:Static p:Resources.trntsettings}"/>
+                    <MenuItem Header="{x:Static p:Resources.trntsettings}" Command="{Binding MenuCommands}"  CommandParameter="openSettings"/>
                 </MenuItem>
                 <MenuItem Header="{x:Static p:Resources.about}">
                     <MenuItem Header="{x:Static p:Resources.license}"/>
@@ -36,11 +45,15 @@
                         <GradientStop Color="#FFF0F0F0" Offset="0.7"/>
                     </LinearGradientBrush>
                 </ToolBar.Background>
-                <Button Content="DemoBtn"/>
+                <Button Content="{x:Static p:Resources.newMatch}" ToolTip="{x:Static p:Resources.newMatch}"/>
             </ToolBar>
             <Grid DockPanel.Dock="Top" Margin="0">
-                <l:StdTournamentControl ViewModel="{Binding TnmtViewModel}"/>
-                <l:TournamentSettingsControl ViewModel="{Binding TnmtSettViewModel}" Visibility="Hidden"/>
+                <Grid Visibility="{Binding TournamentVisibility, Converter={StaticResource bool2visConv}}">
+                    <l:StdTournamentControl DataContext="{Binding TnmtViewModel}"/>
+                </Grid>
+                <Grid Visibility="{Binding SettingsVisibility, Converter={StaticResource bool2visConv}}">
+                    <l:TournamentSettingsControl DataContext="{Binding TnmtSettingsViewModel}"/>
+                </Grid>
             </Grid>
         </DockPanel>
     </Grid>

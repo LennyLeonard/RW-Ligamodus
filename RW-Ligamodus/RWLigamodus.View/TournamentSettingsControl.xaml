@@ -27,6 +27,20 @@
                     <GroupBox.Header>
                         <TextBlock Text="{x:Static p:Resources.general}" Style="{StaticResource groupHeader}"/>
                     </GroupBox.Header>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="120" Text="{x:Static p:Resources.weapon}"/>
+                            <ComboBox Width="120">
+                                <ComboBoxItem/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="120" Text="{x:Static p:Resources.league}"/>
+                            <ComboBox Width="120">
+                                <ComboBoxItem IsSelected="True" Content="Demo"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
                 </GroupBox>
                 <GroupBox Margin="0,5" BorderBrush="Black">
                     <GroupBox.Header>
@@ -35,8 +49,38 @@
                             <CheckBox IsChecked="{Binding IsTimeControlEnabled}" VerticalAlignment="Center" Margin="5,0,0,0"/>
                         </StackPanel>
                     </GroupBox.Header>
-                    <Grid IsEnabled="{Binding IsTimeControlEnabled}">
-                        <TextBox Text="Demotext"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" IsEnabled="{Binding IsTimeControlEnabled}">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Static p:Resources.prep}" Width="120"/>
+                                    <TextBox Text="{Binding PrepTime}" Width="120"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Static p:Resources.proof}" Width="120"/>
+                                    <TextBox Text="{Binding ProofTime}" Width="120"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{x:Static p:Resources.tnmt}" Width="120"/>
+                                    <TextBox Text="{Binding TournamentTime, StringFormat=HH:mm:ss}" Width="120"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Grid.Column="1" Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{x:Static p:Resources.timeout}" Width="120"/>
+                                <CheckBox IsChecked="{Binding TimeEndWaring}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{x:Static p:Resources.timeoutinterval}" Width="120"/>
+                                <TextBox VerticalAlignment="Center"/>
+                                <TextBlock Text="in sec."/>
+                            </StackPanel>
+                        </StackPanel>
                     </Grid>
                 </GroupBox>
                 <GroupBox Margin="0,5" BorderBrush="Black">
@@ -47,8 +91,8 @@
             </StackPanel>
         </Grid>
         <StackPanel HorizontalAlignment="Right" Grid.Row="2" Margin="10" Orientation="Horizontal">
-            <Button Width="80" Content="OK"/>
-            <Button Width="80" Margin="10,0,0,0" Content="Cancel"/>
+            <Button Width="80" Command="{Binding ButtonCommands}" CommandParameter="ok" Content="OK"/>
+            <Button Width="80" Margin="10,0,0,0" Command="{Binding ButtonCommands}" CommandParameter="cancel" Content="{x:Static p:Resources.cancel}"/>
         </StackPanel>
     </Grid>
 </UserControl>

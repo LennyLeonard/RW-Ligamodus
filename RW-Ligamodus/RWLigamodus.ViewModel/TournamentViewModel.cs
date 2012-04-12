@@ -60,6 +60,15 @@ namespace RWLigamodus.ViewModel
 
         #region properties
 
+        // have to be deleted whe datacontext spy works
+        public bool TournamentVisibility
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public string HomeTeamName
         {
             get

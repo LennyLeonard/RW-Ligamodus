@@ -8,27 +8,49 @@ namespace RWLigamodus.ViewModel
 {
     public class TournamentSettingsViewModel : BaseViewModel
     {
-        private bool _isTimeControlEnabled;
+        private CommandHelper _buttonCommands;
+        private RWLigamodusViewModel _parent;
 
-        public TournamentSettingsViewModel()
+        public TournamentSettingsViewModel(RWLigamodusViewModel parent)
         {
-
+            _buttonCommands = new CommandHelper(buttonCommands);
+            _parent = parent;
         }
 
-
+        private void buttonCommands(object parameter)
+        {
+            switch (parameter as string)
+            {
+                case "cancel":
+                    _parent.TournamentVisibility = true;
+                    break;
+                case "ok":
+                    _parent.TournamentVisibility = true;
+                    break;
+            }
+        }
 
         #region properties
 
-        public bool IsTimeControlEnabled
+        public CommandHelper ButtonCommands
         {
             get
             {
-                return _isTimeControlEnabled;
+                return _buttonCommands;
             }
             set
             {
-                _isTimeControlEnabled = value;
-                Notify("IsTimeControlEnabled");
+                _buttonCommands = value;
+                Notify("ButtonCommands");
+            }
+        }
+
+        // have to be deleted whe datacontext spy works
+        public bool SettingsVisibility
+        {
+            get
+            {
+                return false;
             }
         }
 

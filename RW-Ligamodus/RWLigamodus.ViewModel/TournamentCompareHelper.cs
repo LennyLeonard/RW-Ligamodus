@@ -20,10 +20,12 @@ namespace RWLigamodus.ViewModel
                 if (a.Result > b.Result)
                 {
                     a.Point = 1;
+                    b.Point = 0;
                 }
                 else if (a.Result < b.Result)
                 {
                     b.Point = 1;
+                    a.Point = 0;
                 }
                 else
                 {
@@ -36,6 +38,7 @@ namespace RWLigamodus.ViewModel
             return false;
         }
 
+        //nach jeder series pruefen und nach result bei zwischenergebnissen wegen in fuehrung sein
         public void compareAndSetStatus(ExtendedTeamMember a, ExtendedTeamMember b)
         {
             if (a.Result > b.Result)

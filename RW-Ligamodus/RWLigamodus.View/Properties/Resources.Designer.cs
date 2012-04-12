@@ -70,6 +70,15 @@ namespace RWLigamodus.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Cancel ähnelt.
+        /// </summary>
+        public static string cancel {
+            get {
+                return ResourceManager.GetString("cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Exit ähnelt.
         /// </summary>
         public static string exit {
@@ -133,6 +142,15 @@ namespace RWLigamodus.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die League: ähnelt.
+        /// </summary>
+        public static string league {
+            get {
+                return ResourceManager.GetString("league", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die License ähnelt.
         /// </summary>
         public static string license {
@@ -165,6 +183,24 @@ namespace RWLigamodus.View.Properties {
         public static string playoffvisitor {
             get {
                 return ResourceManager.GetString("playoffvisitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Preparation: ähnelt.
+        /// </summary>
+        public static string prep {
+            get {
+                return ResourceManager.GetString("prep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Proof: ähnelt.
+        /// </summary>
+        public static string proof {
+            get {
+                return ResourceManager.GetString("proof", resourceCulture);
             }
         }
         
@@ -232,6 +268,33 @@ namespace RWLigamodus.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Timeout waring: ähnelt.
+        /// </summary>
+        public static string timeout {
+            get {
+                return ResourceManager.GetString("timeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Interval ähnelt.
+        /// </summary>
+        public static string timeoutinterval {
+            get {
+                return ResourceManager.GetString("timeoutinterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Tourmanent: ähnelt.
+        /// </summary>
+        public static string tnmt {
+            get {
+                return ResourceManager.GetString("tnmt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Tournament settings ähnelt.
         /// </summary>
         public static string trntsettings {
@@ -255,6 +318,15 @@ namespace RWLigamodus.View.Properties {
         public static string view {
             get {
                 return ResourceManager.GetString("view", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Weapon: ähnelt.
+        /// </summary>
+        public static string weapon {
+            get {
+                return ResourceManager.GetString("weapon", resourceCulture);
             }
         }
     }

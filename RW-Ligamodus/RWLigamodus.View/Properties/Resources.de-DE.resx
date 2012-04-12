@@ -120,6 +120,9 @@
   <data name="about" xml:space="preserve">
     <value>Info</value>
   </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Abbruch</value>
+  </data>
   <data name="exit" xml:space="preserve">
     <value>Beenden</value>
   </data>
@@ -141,6 +144,9 @@
   <data name="general" xml:space="preserve">
     <value>Allgemein</value>
   </data>
+  <data name="league" xml:space="preserve">
+    <value>Liga:</value>
+  </data>
   <data name="license" xml:space="preserve">
     <value>Lizenz</value>
   </data>
@@ -152,6 +158,12 @@
   </data>
   <data name="playoffvisitor" xml:space="preserve">
     <value>Stechen Gastmannschaft</value>
+  </data>
+  <data name="prep" xml:space="preserve">
+    <value>Vorbereitung:</value>
+  </data>
+  <data name="proof" xml:space="preserve">
+    <value>Probe:</value>
   </data>
   <data name="res" xml:space="preserve">
     <value>Gesamt</value>
@@ -174,6 +186,15 @@
   <data name="timemon" xml:space="preserve">
     <value>Zeitüberwachung</value>
   </data>
+  <data name="timeout" xml:space="preserve">
+    <value>Hinweis Zeitablauf:</value>
+  </data>
+  <data name="timeoutinterval" xml:space="preserve">
+    <value>Interval vor Ablauf</value>
+  </data>
+  <data name="tnmt" xml:space="preserve">
+    <value>Wettkampf:</value>
+  </data>
   <data name="trntsettings" xml:space="preserve">
     <value>Wettkampfeinstellungen</value>
   </data>
@@ -182,5 +203,8 @@
   </data>
   <data name="view" xml:space="preserve">
     <value>Ansicht</value>
+  </data>
+  <data name="weapon" xml:space="preserve">
+    <value>Waffenart:</value>
   </data>
 </root>
