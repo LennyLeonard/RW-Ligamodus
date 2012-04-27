@@ -10,11 +10,15 @@ namespace RWLigamodus.ViewModel
     {
         private CommandHelper _buttonCommands;
         private RWLigamodusViewModel _parent;
+        private TournamentSettings _currentSettings;
+        private TournamentSettings _actualSettings;
+        private const string settingspath = @"settings.xml";
 
         public TournamentSettingsViewModel(RWLigamodusViewModel parent)
         {
             _buttonCommands = new CommandHelper(buttonCommands);
             _parent = parent;
+            _currentSettings = new TournamentSettings();
         }
 
         private void buttonCommands(object parameter)
@@ -28,6 +32,11 @@ namespace RWLigamodus.ViewModel
                     _parent.TournamentVisibility = true;
                     break;
             }
+        }
+
+        public void loadSavedSettings()
+        {
+
         }
 
         #region properties
@@ -45,12 +54,29 @@ namespace RWLigamodus.ViewModel
             }
         }
 
-        // have to be deleted whe datacontext spy works
-        public bool SettingsVisibility
+        public TournamentSettings CurrentSettings
         {
             get
             {
-                return false;
+                return _currentSettings;
+            }
+            set
+            {
+                _currentSettings = value;
+                Notify("CurrentSettings");
+            }
+        }
+
+        public TournamentSettings ActiveSettings
+        {
+            get
+            {
+                return _actualSettings;
+            }
+            set
+            {
+                _actualSettings = value;
+                Notify("ActiveSettings");
             }
         }
 
