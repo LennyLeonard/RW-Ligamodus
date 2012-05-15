@@ -142,6 +142,15 @@ namespace RWLigamodus.View.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Generator script ähnelt.
+        /// </summary>
+        public static string genscript {
+            get {
+                return ResourceManager.GetString("genscript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die League: ähnelt.
         /// </summary>
         public static string league {

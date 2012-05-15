@@ -30,16 +30,12 @@
                     </GroupBox.Header>
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Width="120" Text="{x:Static p:Resources.weapon}"/>
-                            <ComboBox Width="120">
-                                <ComboBoxItem/>
-                            </ComboBox>
+                            <TextBlock VerticalAlignment="Center" Width="120" Text="{x:Static p:Resources.weapon}"/>
+                            <ComboBox VerticalAlignment="Center" Width="120" ItemsSource="{Binding WeaponTypes}" SelectedItem="{Binding CurrentSettings.Weapon}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Width="120" Text="{x:Static p:Resources.league}"/>
-                            <ComboBox Width="120">
-                                <ComboBoxItem IsSelected="True" Content="Demo"/><!--demo-->
-                                <ComboBoxItem Content="{x:Static p:Resources.league}"/><!--demo-->
+                            <ComboBox Width="120" ItemsSource="{Binding Leagues}" SelectedItem="{Binding CurrentSettings.League}">
                             </ComboBox>
                         </StackPanel>
                     </StackPanel>
@@ -59,28 +55,28 @@
                         <Grid Grid.Column="0" IsEnabled="{Binding CurrentSettings.IsTimeControlEnabled}">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{x:Static p:Resources.prep}" Width="120"/>
+                                    <TextBlock VerticalAlignment="Center" Text="{x:Static p:Resources.prep}" Width="120"/>
                                     <toolkit:IntegerUpDown Minimum="0" Maximum="60" Value="{Binding CurrentSettings.PrepTime}" Width="120"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{x:Static p:Resources.proof}" Width="120"/>
+                                    <TextBlock VerticalAlignment="Center" Text="{x:Static p:Resources.proof}" Width="120"/>
                                     <toolkit:IntegerUpDown Minimum="0" Maximum="60" Value="{Binding CurrentSettings.ProofTime}" Width="120"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{x:Static p:Resources.tnmt}" Width="120"/>
+                                    <TextBlock VerticalAlignment="Center" Text="{x:Static p:Resources.tnmt}" Width="120"/>
                                     <toolkit:IntegerUpDown Minimum="0" Maximum="180" Value="{Binding CurrentSettings.TournamentTime}" Width="120"/>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>
                         <StackPanel Grid.Column="1" Orientation="Vertical" IsEnabled="{Binding CurrentSettings.IsTimeControlEnabled}">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{x:Static p:Resources.timeout}" Width="120"/>
+                                <TextBlock VerticalAlignment="Center" Text="{x:Static p:Resources.timeout}" Width="120"/>
                                 <CheckBox IsChecked="{Binding CurrentSettings.TimeEndWaring}" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{x:Static p:Resources.timeoutinterval}" Width="120"/>
+                                <TextBlock Text="{x:Static p:Resources.timeoutinterval}" VerticalAlignment="Center" Width="120"/>
                                 <toolkit:IntegerUpDown Minimum="1" DefaultValue="30" Value="{Binding CurrentSettings.TimeOutInterval}" Maximum="180"/>
-                                <TextBlock Text=" in sec."/>
+                                <TextBlock VerticalAlignment="Center" Text=" in sec."/>
                             </StackPanel>
                         </StackPanel>
                     </Grid>
@@ -89,6 +85,10 @@
                     <GroupBox.Header>
                         <TextBlock Text="{x:Static p:Resources.exportformat}" Style="{StaticResource groupHeader}"/>
                     </GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="{x:Static p:Resources.genscript}" Width="120"/>
+                        <ComboBox ItemsSource="{Binding GeneratorScripts}" SelectedItem="{Binding SelectedGeneratorScript}" Width="120"/>
+                    </StackPanel>
                 </GroupBox>
             </StackPanel>
         </Grid>

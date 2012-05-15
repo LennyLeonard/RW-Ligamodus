@@ -14,6 +14,9 @@ namespace RWLigamodus.ViewModel
         private int _proofTime;
         private int _tournamentTime;
         private int _timeoutInterval;
+        private string _league;
+        private string _weapon;
+        private string _selectedGeneratorScript = string.Empty;
 
         public TournamentSettings()
         {
@@ -87,6 +90,45 @@ namespace RWLigamodus.ViewModel
             {
                 _timeoutInterval = value;
                 Notify("TimeOutInterval");
+            }
+        }
+
+        public string League
+        {
+            get
+            {
+                return _league;
+            }
+            set
+            {
+                _league = value;
+                Notify("League");
+            }
+        }
+
+        public string Weapon
+        {
+            get
+            {
+                return _weapon;
+            }
+            set
+            {
+                _weapon = value;
+                Notify("Weapon");
+            }
+        }
+
+        public string SelectedGeneratorScript
+        {
+            get
+            {
+                return _selectedGeneratorScript;
+            }
+            set
+            {
+                _selectedGeneratorScript = value;
+                Notify("SelectedGeneratorScript");
             }
         }
 

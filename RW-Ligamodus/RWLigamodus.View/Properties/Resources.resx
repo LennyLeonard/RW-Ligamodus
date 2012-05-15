@@ -144,6 +144,9 @@
   <data name="general" xml:space="preserve">
     <value>General</value>
   </data>
+  <data name="genscript" xml:space="preserve">
+    <value>Generator script</value>
+  </data>
   <data name="league" xml:space="preserve">
     <value>League:</value>
   </data>

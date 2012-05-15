@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Teammanager.Core;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace RWLigamodus.ViewModel
 {
@@ -15,12 +16,15 @@ namespace RWLigamodus.ViewModel
         private TournamentViewModel _tnmtViewModel;
         private TournamentSettingsViewModel _tnmtSettViewModel;
         private bool _TournamentVisibility = true;
+        private ProcessStartInfo _teamManagerProcess;
+        private Process _processStarted = null;
 
 
         public RWLigamodusViewModel()
         {
             _menuCommands = new CommandHelper(commandHandler);
             _toolbarCommands = new CommandHelper(commandHandler);
+            _teamManagerProcess = new ProcessStartInfo("Teammanager.View.exe");
             try
             {
                 _persistance = new PersistanceControl();
@@ -40,6 +44,10 @@ namespace RWLigamodus.ViewModel
             switch (param as string)
             {
                 case "newTnmt":
+                    if (_processStarted == null)
+                    {
+                        _processStarted = Process.Start(_teamManagerProcess);
+                    }
                     break;
                 case "exportResult":
                     break;

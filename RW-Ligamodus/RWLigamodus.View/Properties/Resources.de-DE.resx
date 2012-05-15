@@ -144,6 +144,9 @@
   <data name="general" xml:space="preserve">
     <value>Allgemein</value>
   </data>
+  <data name="genscript" xml:space="preserve">
+    <value>Generierskript:</value>
+  </data>
   <data name="league" xml:space="preserve">
     <value>Liga:</value>
   </data>

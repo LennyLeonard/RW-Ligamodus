@@ -45,7 +45,7 @@
                         <GradientStop Color="#FFF0F0F0" Offset="0.7"/>
                     </LinearGradientBrush>
                 </ToolBar.Background>
-                <Button Content="{x:Static p:Resources.newMatch}" ToolTip="{x:Static p:Resources.newMatch}"/>
+                <Button Content="{x:Static p:Resources.newMatch}" ToolTip="{x:Static p:Resources.newMatch}" Command="{Binding MenuCommands}" CommandParameter="newTnmt"/>
             </ToolBar>
             <Grid DockPanel.Dock="Top" Margin="0">
                 <Grid Visibility="{Binding TournamentVisibility, Converter={StaticResource bool2visConv}}">
