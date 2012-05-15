@@ -41,11 +41,6 @@ namespace RWLigamodus.ViewModel
             }
         }
 
-        public void loadSavedSettings()
-        {
-            // implement xmlserializer
-        }
-
         public void cancelAction()
         {
             this.CurrentSettings.IsTimeControlEnabled = this.ActiveSettings.IsTimeControlEnabled;
@@ -76,13 +71,13 @@ namespace RWLigamodus.ViewModel
             return null;
         }
 
-        private bool saveSettings(TournamentSettings settings)
+        public bool saveSettings(TournamentSettings settings)
         {
             // TODO
             return true;
         }
 
-        private TournamentSettings loadSettings()
+        public TournamentSettings loadSettings()
         {
             // TODO
             return null;
