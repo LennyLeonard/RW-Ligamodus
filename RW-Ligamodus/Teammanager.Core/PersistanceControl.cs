@@ -25,7 +25,7 @@ namespace Teammanager.Core
                 {
                     file = new FileStream(teamDBpath, FileMode.Open);
                     _savedTree = (ObservableCollection<TreeViewChildrenViewModel>)serializer.Deserialize(file);
-
+                    //close file?
                     return _savedTree;
                 }
                 catch (Exception)
@@ -92,6 +92,7 @@ namespace Teammanager.Core
                 {
                     file = new FileStream(matchpath, FileMode.Open);
                     _savedMatch = (Match) serializer.Deserialize(file);
+                    //close file?
                 }
                 catch (Exception) { }
             }

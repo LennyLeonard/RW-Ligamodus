@@ -122,24 +122,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="resources\images\group.png" />
-    <Resource Include="resources\images\user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="resources\images\commit.png" />
-    <Resource Include="resources\images\folder.png" />
-    <Resource Include="resources\images\group_add.png" />
-    <Resource Include="resources\images\group_delete.png" />
-    <Resource Include="resources\images\save.png" />
-    <Resource Include="resources\images\settings.png" />
-    <Resource Include="resources\images\user_add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="resources\images\exit.png" />
-    <Resource Include="resources\images\group_edit.png" />
-    <Resource Include="resources\images\info.png" />
-    <Resource Include="resources\images\license.png" />
-    <Resource Include="resources\images\user_edit.png" />
+    <Resource Include="resources\commit.png" />
+    <Resource Include="resources\exit.png" />
+    <Resource Include="resources\folder.png" />
+    <Resource Include="resources\group.png" />
+    <Resource Include="resources\group_add.png" />
+    <Resource Include="resources\group_delete.png" />
+    <Resource Include="resources\group_edit.png" />
+    <Resource Include="resources\info.png" />
+    <Resource Include="resources\license.png" />
+    <Resource Include="resources\save.png" />
+    <Resource Include="resources\settings.png" />
+    <Resource Include="resources\sort.png" />
+    <Resource Include="resources\user.png" />
+    <Resource Include="resources\user_add.png" />
+    <Resource Include="resources\user_edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

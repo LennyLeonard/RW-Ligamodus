@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Teammanager.Core;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace RWLigamodus.ViewModel
 {
@@ -17,13 +19,22 @@ namespace RWLigamodus.ViewModel
         private List<string> _leagues = new List<string>() {"Württemberg-Liga", "Verbandsliga Süd" , "Landesliga Süd", "Bezirksoberliga", "Bezirksliga A", "Bezirksliga B", "Kreisoberliga", "Kreisliga" };
         private List<string> _weaponTypes = new List<string>() { "Luftgewehr", "Luftpistole", "KK-Gewehr" };
         private List<string> _generatorScripts = new List<string>();
+        XmlSerializer serializer;
 
         public TournamentSettingsViewModel(RWLigamodusViewModel parent)
         {
             _buttonCommands = new CommandHelper(buttonCommands);
             _parent = parent;
             _currentSettings = new TournamentSettings();
-            _actualSettings = new TournamentSettings();
+            serializer = new XmlSerializer(typeof(TournamentSettings));
+
+            //load persistent settings
+            if ((_actualSettings = this.loadSettings()) == null)
+            {
+                _actualSettings = new TournamentSettings();
+                _actualSettings.setDefaultVaules(this.Leagues[0], this.WeaponTypes[0]);
+            }
+            this.setCurrent();
         }
 
         private void buttonCommands(object parameter)
@@ -32,16 +43,17 @@ namespace RWLigamodus.ViewModel
             {
                 case "cancel":
                     _parent.TournamentVisibility = true;
-                    this.cancelAction();
+                    this.setCurrent();
                     break;
                 case "ok":
                     _parent.TournamentVisibility = true;
-                    this.okAction();
+                    this.setActive();
+                    this.saveSettings(this.ActiveSettings);
                     break;
             }
         }
 
-        public void cancelAction()
+        public void setCurrent()
         {
             this.CurrentSettings.IsTimeControlEnabled = this.ActiveSettings.IsTimeControlEnabled;
             this.CurrentSettings.League = this.ActiveSettings.League;
@@ -53,7 +65,7 @@ namespace RWLigamodus.ViewModel
             this.CurrentSettings.Weapon = this.ActiveSettings.Weapon;
         }
 
-        public void okAction()
+        public void setActive()
         {
             this.ActiveSettings.IsTimeControlEnabled = this.CurrentSettings.IsTimeControlEnabled;
             this.ActiveSettings.League = this.CurrentSettings.League;
@@ -73,14 +85,42 @@ namespace RWLigamodus.ViewModel
 
         public bool saveSettings(TournamentSettings settings)
         {
-            // TODO
+            FileStream file = new FileStream(SETTINGSPATH, FileMode.Create);
+
+            try
+            {
+                serializer.Serialize(file, settings);
+                file.Close();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
             return true;
         }
 
         public TournamentSettings loadSettings()
         {
-            // TODO
-            return null;
+            TournamentSettings savedSettings;
+            FileStream file;
+
+            if (File.Exists(SETTINGSPATH))
+            {
+                try
+                {
+                    file = new FileStream(SETTINGSPATH, FileMode.Open);
+                    savedSettings = (TournamentSettings)serializer.Deserialize(file);
+                    return savedSettings;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
 
         #region properties

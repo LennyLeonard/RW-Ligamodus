@@ -20,10 +20,16 @@ namespace RWLigamodus.ViewModel
 
         public TournamentSettings()
         {
+        }
+
+        public void setDefaultVaules(string league, string weapon)
+        {
+            this.League = league;
+            this.Weapon = weapon;
+            this.IsTimeControlEnabled = false;
             this.PrepTime = 5;
             this.ProofTime = 10;
             this.TournamentTime = 60;
-            this.TimeOutInterval = 30;
         }
 
         #region properties

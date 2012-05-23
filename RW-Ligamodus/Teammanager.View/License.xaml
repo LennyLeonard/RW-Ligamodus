@@ -6,7 +6,7 @@
         Height="350" Width="500"
         ResizeMode="NoResize"
         Background="#50A0AAFA"
-        Icon="resources/images/license.png"
+        Icon="resources/license.png"
         Topmost="True"
         WindowStartupLocation="CenterOwner"
         Foreground="White"
@@ -21,7 +21,7 @@
                 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
             </TextBlock>
             <TextBlock DockPanel.Dock="Top" Margin="0,25,0,0" TextWrapping="Wrap">
-                Copyright 2011 LennyLeonard
+                Copyright 2012 Mischa Vogt
             </TextBlock>
             <TextBlock DockPanel.Dock="Top" Margin="0,5,0,0" TextWrapping="Wrap">
                 Licensed under the Apache License, Version 2.0 (the "License");

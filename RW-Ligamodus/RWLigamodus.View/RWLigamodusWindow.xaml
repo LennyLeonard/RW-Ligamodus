@@ -23,7 +23,7 @@
                 <MenuItem Header="{x:Static p:Resources.file}">
                     <MenuItem Header="{x:Static p:Resources.newMatch}" Command="{Binding MenuCommands}" CommandParameter="newTnmt"/>
                     <MenuItem Header="{x:Static p:Resources.export}" Command="{Binding MenuCommands}"  CommandParameter="exportResult"/>
-                    <MenuItem Header="{x:Static p:Resources.exit}"/>
+                    <MenuItem Header="{x:Static p:Resources.exit}" Command="{Binding MenuCommands}"  CommandParameter="exit"/>
                 </MenuItem>
                 <MenuItem Header="{x:Static p:Resources.view}">
                     <MenuItem Header="{x:Static p:Resources.expertMode}" IsCheckable="True"/>

@@ -8,7 +8,7 @@
         Background="#50A0AAFA"
         Topmost="True"
         WindowStartupLocation="CenterOwner"
-        Icon="resources/images/info.png">
+        Icon="resources/info.png">
     <Window.DataContext>
         <core:VersionWindowViewModel/>
     </Window.DataContext>

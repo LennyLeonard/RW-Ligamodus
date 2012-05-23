@@ -20,46 +20,46 @@
                 <MenuItem Header="{x:Static p:Resources.file}" Foreground="White">
                     <MenuItem Header="{x:Static p:Resources.save}" Command="{Binding MenuCommands}" CommandParameter="save" Foreground="Black">
                         <MenuItem.Icon>
-                            <Image Height="18" Source="resources/images/save.png"/>
+                            <Image Height="18" Source="resources/save.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{x:Static p:Resources.commit}" Command="{Binding MenuCommands}" CommandParameter="commit" Foreground="Black">
                         <MenuItem.Icon>
-                            <Image Height="18" Source="resources/images/commit.png"/>
+                            <Image Height="18" Source="resources/commit.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{x:Static p:Resources.exit}" Name="closeMenuItem" Foreground="Black">
                         <MenuItem.Icon>
-                            <Image Height="18" Source="resources/images/exit.png"/>
+                            <Image Height="18" Source="resources/exit.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="{x:Static p:Resources.actions}" Foreground="White">
                     <MenuItem Header="{x:Static p:Resources.add_team}" Command="{Binding MenuCommands}" CommandParameter="addTeam" Foreground="Black">
                         <MenuItem.Icon>
-                            <Image Height="18" Source="resources/images/group_add.png"/>
+                            <Image Height="18" Source="resources/group_add.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{x:Static p:Resources.add_teamMember}" Command="{Binding MenuCommands}" CommandParameter="addTeamMember" Foreground="Black">
                         <MenuItem.Icon>
-                            <Image Height="18" Source="resources/images/user_add.png"/>
+                            <Image Height="18" Source="resources/user_add.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{x:Static p:Resources.remove_item}" Command="{Binding MenuCommands}" CommandParameter="deleteItem" Foreground="Black">
                         <MenuItem.Icon>
-                            <Image Height="18" Source="resources/images/group_delete.png"/>
+                            <Image Height="18" Source="resources/group_delete.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="{x:Static p:Resources.about}" Foreground="White">
                     <MenuItem Header="{x:Static p:Resources.licence}" Name="licenceMenuItem" Foreground="Black">
                         <MenuItem.Icon>
-                            <Image Height="18" Source="resources/images/license.png"/>
+                            <Image Height="18" Source="resources/license.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <MenuItem Header="{x:Static p:Resources.version}" Name="versionMenuItem" Foreground="Black">
                         <MenuItem.Icon>
-                            <Image Height="18" Source="resources/images/info.png"/>
+                            <Image Height="18" Source="resources/info.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
@@ -73,20 +73,20 @@
                     </LinearGradientBrush>
                 </ToolBar.Background>
                 <Button ToolTip="{x:Static p:Resources.save}" Command="{Binding MenuBarCommands}" CommandParameter="save">
-                    <Image Height="24" Source="resources/images/save.png"/>
+                    <Image Height="24" Source="resources/save.png"/>
                 </Button>
                 <Button ToolTip="{x:Static p:Resources.commit}" Command="{Binding MenuBarCommands}" CommandParameter="commit">
-                    <Image Height="24" Source="resources/images/commit.png"/>
+                    <Image Height="24" Source="resources/commit.png"/>
                 </Button>
                 <Separator/>
                 <Button ToolTip="{x:Static p:Resources.add_team}" Command="{Binding MenuBarCommands}" CommandParameter="addTeam">
-                    <Image Height="24" Source="resources/images/group_add.png"/>
+                    <Image Height="24" Source="resources/group_add.png"/>
                 </Button>
                 <Button ToolTip="{x:Static p:Resources.add_teamMember}" Command="{Binding MenuBarCommands}" CommandParameter="addTeamMember">
-                    <Image Height="24" Source="resources/images/user_add.png"/>
+                    <Image Height="24" Source="resources/user_add.png"/>
                 </Button>
                 <Button ToolTip="{x:Static p:Resources.remove_item}" Command="{Binding MenuBarCommands}" CommandParameter="deleteItem">
-                    <Image Height="24" Source="resources/images/group_delete.png"/>
+                    <Image Height="24" Source="resources/group_delete.png"/>
                 </Button>
             </ToolBar>
             <Grid DockPanel.Dock="Top" Margin="0">
@@ -128,7 +128,7 @@
                                             </MenuItem>
                                         </ContextMenu>
                                     </DockPanel.ContextMenu>
-                                    <Image Height="15" Source="resources/images/group.png"/>
+                                    <Image Height="15" Source="resources/group.png"/>
                                     <TextBlock x:Name="tb" Margin="5,0,0,0" Text="{Binding Name}"/>
                                     <TextBox x:Name="etb" Background="White" BorderThickness="0" Visibility="Collapsed" Text="{Binding Name, UpdateSourceTrigger=LostFocus}"/>
                                 </DockPanel>
@@ -175,7 +175,7 @@
                                             </MenuItem>
                                         </ContextMenu>
                                     </DockPanel.ContextMenu>
-                                    <Image Height="15" Source="resources/images/user.png"/>
+                                    <Image Height="15" Source="resources/user.png"/>
                                     <TextBlock x:Name="tb" Margin="5,0,0,0" Text="{Binding Name}"/>
                                     <TextBox x:Name="etb" Background="White" BorderThickness="0" Visibility="Collapsed" Text="{Binding Name, UpdateSourceTrigger=LostFocus}"/>
                                 </DockPanel>

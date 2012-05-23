@@ -39,6 +39,7 @@ namespace RWLigamodus.ViewModel
             }
         }
 
+
         private void commandHandler(object param)
         {
             switch (param as string)
@@ -53,6 +54,9 @@ namespace RWLigamodus.ViewModel
                     break;
                 case "openSettings":
                     this.TournamentVisibility = false;
+                    break;
+                case "exit":
+                    
                     break;
             }
         }
